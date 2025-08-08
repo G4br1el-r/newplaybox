@@ -3,7 +3,7 @@ import { Orbitron } from "next/font/google";
 import "./globals.css";
 import ContainerAlign from "@/components/ContainerAlign";
 import Header from "@/components/Header/Main";
-import { Footer } from "@/components/Footer";
+import Navbar from "@/components/Header/Navbar";
 
 const orbitron = Orbitron({ subsets: ["latin"] });
 
@@ -20,13 +20,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${orbitron.className} bg-[url('/background.webp')] tracking-widest text-white`}
+        className={`${orbitron.className} bg-black tracking-widest text-white`}
       >
-        <ContainerAlign>
-          <Header />
-          {children}
-          {/* <Footer /> */}
-        </ContainerAlign>
+        <section className="grid h-screen w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto] gap-0">
+          <aside className="col-start-1 col-end-2 row-start-1 row-end-4">
+            <Navbar />
+          </aside>
+
+          <header className="col-start-2 col-end-3 row-start-1 row-end-2">
+            <Header />
+          </header>
+
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3">
+            {children}
+          </main>
+        </section>
       </body>
     </html>
   );
