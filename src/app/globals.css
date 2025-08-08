@@ -17,6 +17,8 @@
   --color-medium-light-gray: #546e7a;
   --color-dark-gray: #455a64;
   --color-blue-accent: #03a9f4;
+  --color-blue-header: #0a0a0f;
+  --color-purple-black-hole: #5b3cce;
   --shadow-blue-neon: 0px 0px 30px 1px rgba(0, 188, 212, 0.15);
 
   --breakpoint-375: 375px;
@@ -24,7 +26,6 @@
   --breakpoint-1440: 1440px;
 }
 
-/* Scrollbar customizado quadrado sem setas */
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;

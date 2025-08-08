@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Orbitron } from "next/font/google";
 import "./globals.css";
-import ContainerAlign from "@/components/ContainerAlign";
 import Header from "@/components/Header/Main";
 import Navbar from "@/components/Header/Navbar";
 
@@ -20,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${orbitron.className} bg-black tracking-widest text-white`}
+        className={`${orbitron.className} bg-[url('/background.webp')] bg-center bg-no-repeat tracking-widest text-white`}
       >
         <section className="grid h-screen w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto] gap-0">
           <aside className="col-start-1 col-end-2 row-start-1 row-end-4">
