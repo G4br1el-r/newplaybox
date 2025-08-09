@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Jogos que desafiam. Experiências que marcam.",
 };
 
+// to-purple-dark from-bg-black via-blue-darkest bg-gradient-to-br
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,14 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${orbitron.className} bg-[url('/background.webp')] bg-center bg-no-repeat tracking-widest text-white`}
+        className={`${orbitron.className} bg-blue-darkest bg-center bg-no-repeat tracking-widest text-white`}
       >
-        <section className="grid h-screen w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto] gap-0">
-          <aside className="col-start-1 col-end-2 row-start-1 row-end-4">
+        <section className="grid w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto]">
+          <aside className="col-start-1 col-end-2 row-start-1 row-end-4 hidden xl:block">
             <Navbar />
           </aside>
 
-          <header className="col-start-2 col-end-3 row-start-1 row-end-2">
+          <header className="col-start-2 col-end-3 row-start-1 row-end-2 xl:hidden">
             <Header />
           </header>
 

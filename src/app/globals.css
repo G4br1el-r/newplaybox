@@ -2,24 +2,55 @@
 @plugin 'tailwind-scrollbar';
 
 @theme {
+  /* ===== Base Colors ===== */
   --color-deep-black: #0a0e1a;
-  --color-blue-dark: #1a237e;
-  --color-blue-dark-semidark: #263238;
+  --color-white: #ffffff;
+
+  /* ===== Blues ===== */
+  --color-blue-darkest: #000012;
+  --color-blue-dark: #000623;
+  --color-blue-semidark: #263238;
+  --color-blue-medium: #1565c0;
   --color-blue-light: #2196f3;
+  --color-blue-lighter: #4fc3f7;
+  --color-blue-pastel: #bbdefb;
+
+  /* ===== Neon Blues / Cyan ===== */
   --color-blue-neon: #00bcd4;
   --color-blue-neon-light: #4fc3f7;
+  --color-blue-neon-bright: #00e5ff;
   --color-cyan-neon: #29b6f6;
   --color-cyan-neon-hover: #0288d1;
-  --color-indigo-neon: #3f51b5;
+  --color-cyan-neon-bright: #18ffff;
+
+  /* ===== Blue Accents ===== */
+  --color-blue-accent: #03a9f4;
+  --color-blue-header: #0a0a0f;
+
+  /* ===== Grayish Blues ===== */
   --color-gray-bluish: #37474f;
-  --color-white: #ffffff;
   --color-light-gray: #78909c;
   --color-medium-light-gray: #546e7a;
   --color-dark-gray: #455a64;
-  --color-blue-accent: #03a9f4;
-  --color-blue-header: #0a0a0f;
-  --color-purple-black-hole: #5b3cce;
+
+  /* ===== Purples ===== */
+  --color-purple-darkest: #2a003f;
+  --color-purple-dark: #190042;
+  --color-purple-medium: #7b1fa2;
+  --color-purple-light: #ba68c8;
+  --color-purple-lighter: #e1bee7;
+
+  /* ===== Neon Purples ===== */
+  --color-purple-neon: #b388ff;
+  --color-purple-neon-bright: #d500f9;
+  --color-purple-neon-light: #e040fb;
+  --color-purple-black-hole: #623ccd;
+  --color-purple-logo: #9200fd;
+
+  /* ===== Shadows ===== */
   --shadow-blue-neon: 0px 0px 30px 1px rgba(0, 188, 212, 0.15);
+  --shadow-blue-neon-strong: 0px 0px 40px 3px rgba(0, 229, 255, 0.35);
+  --shadow-purple-neon: 0px 0px 30px 1px rgba(213, 0, 249, 0.25);
 
   --breakpoint-375: 375px;
   --breakpoint-425: 425px;
@@ -43,4 +74,10 @@
   .custom-scrollbar::-webkit-scrollbar-button {
     display: none;
   }
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }

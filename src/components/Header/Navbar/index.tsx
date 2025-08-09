@@ -20,10 +20,10 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <>
+    <section className="h-screen max-h-screen xl:sticky xl:top-0 xl:left-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`from-blue-light to-blue-neon absolute top-4.5 left-4.5 z-60 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[6px] bg-gradient-to-tr shadow-[0_4px_20px_rgba(33,150,243,0.3)] transition-transform duration-700 hover:shadow-[0_6px_30px_rgba(33,150,243,0.5)] xl:hidden ${isOpen ? "translate-x-54" : ""}`}
+        className={`to-purple-logo from-cyan-neon-bright absolute top-4.5 left-4.5 z-60 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[6px] bg-gradient-to-br shadow-[0_4px_20px_rgba(33,150,243,0.3)] transition-transform duration-700 hover:shadow-[0_6px_30px_rgba(33,150,243,0.5)] xl:hidden ${isOpen ? "translate-x-54" : ""}`}
       >
         {isOpen ? <X size={25} /> : <Menu className="text-white" size={25} />}
       </button>
@@ -41,6 +41,6 @@ export default function Navbar() {
       >
         <ContentNavBar />
       </section>
-    </>
+    </section>
   );
 }
