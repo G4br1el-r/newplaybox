@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @import "tailwindcss";
 @plugin 'tailwind-scrollbar';
 
@@ -57,6 +58,7 @@
   --breakpoint-1440: 1440px;
 }
 
+/* PERSONALIZACAO DO SCROLL DO NAVBAR */
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
     width: 3px;
@@ -74,6 +76,41 @@
   .custom-scrollbar::-webkit-scrollbar-button {
     display: none;
   }
+}
+
+.pixelFont {
+  font-family: "Press Start 2P", cursive;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* ANIMACAO DE 'COLETA' DA MOEDA AO CLICAR DO FEATUREGAMES */
+@keyframes coinFlip {
+  0% {
+    transform: translateY(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-20px) rotateY(90deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-35px) rotateY(180deg) scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-25px) rotateY(270deg) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-50px) rotateY(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.coin-animate {
+  animation: coinFlip 0.2s ease-out forwards;
 }
 
 html,

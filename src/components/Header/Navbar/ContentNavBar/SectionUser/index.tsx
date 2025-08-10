@@ -1,20 +1,17 @@
+import BaseImage from "@/components/BaseImage";
 import FilledButton from "@/components/Button/FilledButton";
 import OutlineButton from "@/components/Button/OutlineButton";
-import Image from "next/image";
 
 export default function SectionUser() {
   return (
     <div className="flex h-[260px] w-full flex-col items-center gap-6 p-4">
       <div className="flex flex-col items-center gap-2">
-        <div className="relative h-[60px] w-[110px]">
-          <Image
-            src="/logo.webp"
-            alt="logo da playbox"
-            fill
-            quality={100}
-            className="object-contain"
-          />
-        </div>
+        <BaseImage
+          src="/logo.webp"
+          alt="logo da playbox"
+          extraClassImage="object-contain"
+          extraClassWrapper="relative h-[60px] w-[110px]"
+        />
 
         <p className="text-center text-[0.8rem] text-white">
           Stay updated on new releases.
