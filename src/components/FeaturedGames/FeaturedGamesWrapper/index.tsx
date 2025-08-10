@@ -44,7 +44,7 @@ export default function FeaturedGamesWrapper({
             className={`${isOpen ? "coin-animate" : "hidden"} absolute h-full w-full rounded-full object-cover`}
           />
 
-          <p className="pixelFont animate-pulse text-[0.8rem]">
+          <p className="pixelFont text-purple-neon animate-pulse text-[0.8rem]">
             {isOpen ? "Show Less" : "Show More"}
           </p>
         </button>

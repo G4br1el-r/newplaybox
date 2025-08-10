@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 z-40 flex h-20 w-full items-center justify-center transition-transform duration-700 ease-in-out ${
+        className={`fixed top-0 left-0 z-90 flex h-20 w-full items-center justify-center transition-transform duration-700 ease-in-out ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           isScrolled
