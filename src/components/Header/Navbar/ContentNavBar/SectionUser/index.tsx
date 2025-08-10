@@ -1,8 +1,10 @@
+import FilledButton from "@/components/Button/FilledButton";
+import OutlineButton from "@/components/Button/OutlineButton";
 import Image from "next/image";
 
 export default function SectionUser() {
   return (
-    <div className="bg-blue-light/10 border-blue-neon flex h-[260px] w-full flex-col items-center gap-6 border-b p-4">
+    <div className="flex h-[260px] w-full flex-col items-center gap-6 p-4">
       <div className="flex flex-col items-center gap-2">
         <div className="relative h-[60px] w-[110px]">
           <Image
@@ -19,12 +21,22 @@ export default function SectionUser() {
         </p>
       </div>
       <div className="flex w-full flex-col gap-3 text-[0.8rem]">
-        <button className="to-blue-neon-light from-cyan-neon-hover h-10 w-full cursor-pointer rounded-[8px] bg-gradient-to-l font-bold">
-          🚀 Create account
-        </button>
-        <button className="border-cyan-neon text-cyan-neon h-10 w-full cursor-pointer rounded-[8px] border-1">
-          👋 Back again? Sign in
-        </button>
+        <div className="h-10 w-full">
+          <FilledButton
+            ButtonType="link"
+            content="🚀 Create account"
+            extraClass="text-[0.8rem] items-center justify-center"
+            href="/"
+          />
+        </div>
+        <div className="h-10 w-full">
+          <OutlineButton
+            ButtonType="link"
+            content="👋 Back again? Sign in"
+            extraClass="text-[0.8rem] items-center justify-center"
+            href="/"
+          />
+        </div>
       </div>
     </div>
   );

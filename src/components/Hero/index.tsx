@@ -1,8 +1,10 @@
 import Image from "next/image";
+import FilledButton from "../Button/FilledButton";
+import OutlineButton from "../Button/OutlineButton";
 
 export default function Hero() {
   return (
-    <section className="relative flex h-[100dvh] flex-col items-center justify-between overflow-hidden px-3 pt-25 pb-3.5 text-center">
+    <section className="relative flex h-[100svh] flex-col items-center justify-between overflow-hidden px-3 pt-25 pb-3.5 text-center">
       <h1 className="to-purple-logo from-cyan-neon-bright bg-gradient-to-r bg-clip-text text-[1.6rem] font-bold text-transparent">
         Explore the gaming universe with Playbox
       </h1>
@@ -29,12 +31,22 @@ export default function Hero() {
       </div>
 
       <div className="flex w-full flex-col items-center gap-3 text-[0.8rem]">
-        <button className="bg-purple-black-hole h-12 w-full animate-pulse cursor-pointer rounded-[5px]">
-          Get Start Now
-        </button>
-        <button className="border-purple-black-hole h-12 w-full cursor-pointer rounded-[5px] border-1">
-          Game Library
-        </button>
+        <div className="h-10 w-full">
+          <FilledButton
+            content="Get Start Now"
+            extraClass="text-[0.8rem] items-center justify-center"
+            ButtonType="link"
+            href="/"
+          />
+        </div>
+        <div className="h-10 w-full">
+          <OutlineButton
+            content="Game Library"
+            ButtonType="link"
+            href="/"
+            extraClass="text-[0.8rem items-center justify-center"
+          />
+        </div>
       </div>
     </section>
   );

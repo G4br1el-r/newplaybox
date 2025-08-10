@@ -32,7 +32,7 @@ export default function RootLayout({
             <Header />
           </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3">
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-10">
             {children}
           </main>
         </section>
