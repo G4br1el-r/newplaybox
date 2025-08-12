@@ -6,16 +6,24 @@ import FilledButton from "@/components/Button/FilledButton";
 import TagsWrapper from "../Tags/TagsWrapper";
 import Link from "next/link";
 
-export default function CardFeaturedGames() {
+interface CardFeaturedGamesProps {
+  fullWidth?: boolean;
+}
+
+export default function CardFeaturedGames({
+  fullWidth,
+}: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-purple-black-hole relative h-[400px] w-full rounded-[10px] border-2">
+    <div
+      className={`border-purple-black-hole ${fullWidth && "md:col-span-2"} relative h-[400px] w-full rounded-[10px] border-2`}
+    >
       <Link
         href="#"
-        className="from-blue-darkest absolute left-1/2 z-10 h-full w-full -translate-x-1/2 rounded-[10px] bg-gradient-to-b via-transparent"
+        className="from-blue-darkest absolute left-1/2 z-10 h-full w-full -translate-x-1/2 rounded-[10px] bg-gradient-to-b via-transparent md:px-2"
       >
-        <p className="z-10 mt-4 text-center">
+        <p className="z-10 mt-4 text-center md:text-[1.1rem]">
           The Legend of Zelda: Breath of the Wild
         </p>
       </Link>

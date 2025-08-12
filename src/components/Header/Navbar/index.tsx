@@ -36,7 +36,7 @@ export default function Navbar({ isVisible }: NavbarProps) {
         />
       )}
       <section
-        className={`from-blue-darkest custom-scrollbar via-blue-dark to-purple-dark fixed top-0 left-0 z-90 h-full w-64 overflow-y-auto bg-gradient-to-b shadow-lg transition-transform duration-700 xl:static xl:translate-x-0 ${
+        className={`from-blue-darkest custom-scrollbar via-blue-dark to-purple-dark fixed top-0 left-0 z-90 h-[100svh] w-64 overflow-y-auto bg-gradient-to-b shadow-lg transition-transform duration-700 xl:sticky xl:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

@@ -19,10 +19,8 @@ export default function ContentNavBar() {
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
-          <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
         </TopicsWrapper>
         <TopicsWrapper title="COMMUNITY">
-          <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />
           <TopicsButton content="Coming Soon" href="/" icon="🕒" disabled />

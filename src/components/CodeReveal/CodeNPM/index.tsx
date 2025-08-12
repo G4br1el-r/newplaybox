@@ -1,6 +1,6 @@
 export default function CodeNPM() {
   return (
-    <div className="mt-3 flex w-full flex-col gap-6 font-mono text-[0.8rem]">
+    <div className="mt-6 flex w-full flex-col gap-6 font-mono text-[0.8rem] md:text-[1rem]">
       <div className="text-green-400">
         <span className="font-bold text-pink-500 drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]">
           ${" "}
@@ -36,7 +36,7 @@ export default function CodeNPM() {
           ${" "}
         </span>
         <span className="font-bold text-yellow-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]">
-          npm run
+          npx run
         </span>{" "}
         create-gaming-universe{" "}
         <span className="text-orange-400 drop-shadow-[0_0_5px_rgba(251,146,60,0.8)]">
