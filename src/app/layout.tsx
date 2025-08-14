@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   description: "Jogos que desafiam. Experiências que marcam.",
 };
 
-// to-purple-dark from-bg-black via-blue-darkest bg-gradient-to-br
-
 export default function RootLayout({
   children,
 }: Readonly<{

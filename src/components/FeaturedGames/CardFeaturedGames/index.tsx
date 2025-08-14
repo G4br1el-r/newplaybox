@@ -5,12 +5,22 @@ import { useState } from "react";
 import FilledButton from "@/components/Button/FilledButton";
 import TagsWrapper from "../Tags/TagsWrapper";
 import Link from "next/link";
+import { TagsType } from "@/@types/FeaturedGamesType";
 
 interface CardFeaturedGamesProps {
+  id: number;
+  name: string;
+  background_image: string;
+  metacritic: number;
+  tags: TagsType[];
   fullWidth?: boolean;
 }
 
 export default function CardFeaturedGames({
+  name,
+  background_image,
+  metacritic,
+  tags,
   fullWidth,
 }: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,14 +33,12 @@ export default function CardFeaturedGames({
         href="#"
         className="from-blue-darkest absolute left-1/2 z-10 h-full w-full -translate-x-1/2 rounded-[10px] bg-gradient-to-b via-transparent md:px-2"
       >
-        <p className="z-10 mt-4 text-center md:text-[1.1rem]">
-          The Legend of Zelda: Breath of the Wild
-        </p>
+        <p className="z-10 mt-4 text-center md:text-[1.1rem]">{name}</p>
       </Link>
-      <TagsWrapper isOpen={isOpen} />
+      <TagsWrapper isOpen={isOpen} tags={tags} />
 
       <BaseImage
-        src="/img.webp"
+        src={background_image}
         alt="Game"
         extraClassImage="h-full w-full rounded-[8px] object-cover"
         extraClassWrapper="relative h-full"
