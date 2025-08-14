@@ -6,6 +6,7 @@ import FilledButton from "@/components/Button/FilledButton";
 import TagsWrapper from "../Tags/TagsWrapper";
 import Link from "next/link";
 import { TagsType } from "@/@types/FeaturedGamesType";
+import { MetacriticScoreColor } from "@/utils/MetacriticScoreColor";
 
 interface CardFeaturedGamesProps {
   id: number;
@@ -24,6 +25,8 @@ export default function CardFeaturedGames({
   fullWidth,
 }: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const metacriticClassBackground = MetacriticScoreColor(metacritic);
+  const isMetacriticRating = metacritic;
 
   return (
     <div
@@ -44,7 +47,7 @@ export default function CardFeaturedGames({
         extraClassWrapper="relative h-full"
       />
       <div
-        className={`absolute ${isOpen ? "bottom-32" : "bottom-4"} left-1/2 z-31 h-7 w-[150px] -translate-x-1/2 transition-all duration-500`}
+        className={`absolute ${isOpen ? "bottom-32" : "bottom-4"} left-1/2 z-31 flex h-7 w-[150px] -translate-x-1/2 items-center transition-all duration-500`}
       >
         <FilledButton
           content={isOpen ? "Hide Tags" : "Show Tags"}
@@ -53,6 +56,13 @@ export default function CardFeaturedGames({
           href="#"
           onClick={() => setIsOpen(!isOpen)}
         />
+        {isMetacriticRating && (
+          <div
+            className={`absolute -right-15 flex h-7 w-7 items-center justify-center rounded-[3px] ${metacriticClassBackground} text-[0.8rem]`}
+          >
+            <p>{metacritic}</p>
+          </div>
+        )}
       </div>
     </div>
   );

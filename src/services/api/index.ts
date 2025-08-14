@@ -2,7 +2,7 @@ import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.rawg.io/api",
+  baseURL: process.env.NEXT_PUBLIC_URL_API,
   headers: {
     "Content-Type": "application/json",
   },
