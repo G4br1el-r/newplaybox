@@ -26,7 +26,7 @@ export default function CardFeaturedGames({
 }: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
   const metacriticClassBackground = MetacriticScoreColor(metacritic);
-  const isMetacriticRating = metacritic;
+  const isMetacriticRating = metacritic > 0;
 
   return (
     <div

@@ -17,9 +17,7 @@ export const AudioPlayer = forwardRef<AudioPlayerRef, AudioPlayerProps>(
       play: () => {
         if (audioRef.current) {
           audioRef.current.currentTime = 0;
-          audioRef.current
-            .play()
-            .catch((e) => console.log("Erro ao tocar som:", e));
+          audioRef.current.play().catch((e) => {});
         }
       },
     }));
