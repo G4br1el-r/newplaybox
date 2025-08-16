@@ -1,4 +1,6 @@
+import BaseImage from "@/components/BaseImage";
 import { handleViewsCommentsLikes } from "@/utils/HandleViewsCommentsLikes";
+import Image from "next/image";
 
 interface CommentsProps {
   name: string;
@@ -6,6 +8,7 @@ interface CommentsProps {
   url: string;
   username: string;
   created: string;
+  photo: string;
 }
 
 export default function Comments({
@@ -14,11 +17,16 @@ export default function Comments({
   url,
   username,
   created,
+  photo,
 }: CommentsProps) {
   const formattedUsername = username.slice(3);
   const title = name;
   const isPostActive = text.length > 0;
-  const formattedDate = new Date(created).toLocaleDateString("pt-BR");
+  const formattedDate = new Date(created).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
   const { formattedViews, formattedComments, formattedLikes } =
     handleViewsCommentsLikes();
 
@@ -41,7 +49,12 @@ export default function Comments({
             </p>
             <div className="flex w-full items-center justify-between gap-1 text-gray-500">
               <div className="flex items-center gap-1.5">
-                <div className="h-4 w-4 rounded-full bg-red-700/50 md:h-5 md:w-5" />
+                <BaseImage
+                  src={photo}
+                  alt={username}
+                  extraClassImage="w-full h-full rounded-full"
+                  extraClassWrapper="h-4 relative w-4  md:h-5 md:w-5"
+                />
                 <p className="text-[0.6rem] md:text-[0.8rem]">
                   {formattedUsername}
                 </p>
