@@ -20,6 +20,7 @@ export default function Comments({
   photo,
 }: CommentsProps) {
   const formattedUsername = username.slice(3);
+  const formattedText = text.replace("<p>", "").replace("</p>", "");
   const title = name;
   const isPostActive = text.length > 0;
   const formattedDate = new Date(created).toLocaleDateString("en-US", {
@@ -65,7 +66,7 @@ export default function Comments({
             </div>
           </div>
           <p className="line-clamp-4 w-full text-[0.6rem] text-white md:text-[0.8rem]">
-            {text}
+            {formattedText}
           </p>
         </div>
         <div className="flex w-full items-center justify-between gap-3 text-[0.6rem] text-gray-500 md:text-[0.8rem]">

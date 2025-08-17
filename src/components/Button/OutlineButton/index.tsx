@@ -25,5 +25,9 @@ export default function OutlineButton({
     );
   }
 
-  return <button className={className}>{content}</button>;
+  return (
+    <button onClick={onClick} className={className}>
+      {content}
+    </button>
+  );
 }

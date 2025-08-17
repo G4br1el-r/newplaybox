@@ -1,5 +1,6 @@
 import { CommumitySayingType } from "@/@types/CommunitySayingType";
 import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
+import { SingleGameType } from "@/@types/SingleGameTypes";
 import axios from "axios";
 
 const api = axios.create({
@@ -7,7 +8,6 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10000,
 });
 
 export async function getDataForFeaturedGames(): Promise<FeaturedGamesType[]> {
@@ -54,5 +54,19 @@ export async function getCommunitySaying(idsFeaturedGame: number[]): Promise<Com
     throw new Error(
       `Failed to fetch community saying from API: ${err.message}`,
     );
+  }
+}
+
+export async function getSingleGame(id: string) {
+  try {
+    const response = await api.get<SingleGameType>(`/games/${id}`, {
+      params: {
+        key: process.env.NEXT_PUBLIC_API_KEY,
+      },
+    });
+
+    return response.data;
+  } catch (err: any) {
+    throw new Error(`Failed to fetch single game from API: ${err.message}`);
   }
 }

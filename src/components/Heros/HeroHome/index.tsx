@@ -1,8 +1,8 @@
-import FilledButton from "../Button/FilledButton";
-import OutlineButton from "../Button/OutlineButton";
-import BaseImage from "../BaseImage";
+import FilledButton from "../../Button/FilledButton";
+import OutlineButton from "../../Button/OutlineButton";
+import BaseImage from "../../BaseImage";
 
-export default function Hero() {
+export default function HeroHome() {
   return (
     <section className="relative flex h-[100svh] flex-col items-center justify-between overflow-hidden px-3 pt-25 pb-3.5 text-center xl:pt-10">
       <h1 className="to-purple-logo from-cyan-neon-bright max-w-[1400px] bg-gradient-to-r bg-clip-text text-[1.6rem] font-bold text-transparent md:text-[2.4rem] lg:text-[3.2rem] 2xl:text-[3.6rem]">
@@ -24,8 +24,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="flex w-full max-w-[1400px] flex-col items-center gap-3 text-[0.8rem] xl:flex-row">
-        <div className="h-10 w-full md:h-12">
+      <div className="flex w-full flex-col items-center gap-3 text-[0.8rem] xl:flex-row">
+        <div className="h-10 w-full md:h-15">
           <FilledButton
             content="Get Start Now"
             extraClass="text-[0.8rem] md:text-[1rem] items-center justify-center"
@@ -33,7 +33,7 @@ export default function Hero() {
             href="/"
           />
         </div>
-        <div className="h-10 w-full md:h-12">
+        <div className="h-10 w-full md:h-15">
           <OutlineButton
             content="Game Library"
             ButtonType="link"

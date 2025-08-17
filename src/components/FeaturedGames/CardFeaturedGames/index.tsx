@@ -18,6 +18,7 @@ interface CardFeaturedGamesProps {
 }
 
 export default function CardFeaturedGames({
+  id,
   name,
   background_image,
   metacritic,
@@ -33,7 +34,7 @@ export default function CardFeaturedGames({
       className={`border-purple-black-hole ${fullWidth && "md:col-span-2"} relative h-[400px] w-full rounded-[10px] border-2`}
     >
       <Link
-        href="#"
+        href={`/game/${id}`}
         className="from-blue-darkest absolute left-1/2 z-10 h-full w-full -translate-x-1/2 rounded-[10px] bg-gradient-to-b via-transparent md:px-2"
       >
         <p className="z-10 mt-4 text-center md:text-[1.1rem]">{name}</p>

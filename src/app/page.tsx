@@ -3,21 +3,20 @@ import CodeReveal from "@/components/CodeReveal";
 import CommunitySaying from "@/components/CommunitySaying";
 import FeaturedGames from "@/components/FeaturedGames";
 import { Footer } from "@/components/Footer";
-import Hero from "@/components/Hero";
+import HeroHome from "@/components/Heros/HeroHome";
 import HeroSubtitle from "@/components/HeroSubtitle";
 import FeaturedGamesSkeleton from "@/components/FeaturedGames/SkeletonScreen/FeaturedGamesSkeleton";
 import { getCommunitySaying, getDataForFeaturedGames } from "@/services/api";
 
 export default async function Home() {
   const featuredGamesData = await getDataForFeaturedGames();
-  const idsFeaturedGames = featuredGamesData.reduce((acc, game) => {
-    acc.push(game.id);
-    return acc;
-  }, [] as number[]);
+  //prettier-ignore
+  const idsFeaturedGames = featuredGamesData.reduce((acc, game) => { acc.push(game.id); return acc; }, [] as number[]);
   const communitySayingData = await getCommunitySaying(idsFeaturedGames);
+
   return (
     <>
-      <Hero />
+      <HeroHome />
       {/* <HeroSubtitle /> */}
       <Suspense fallback={<FeaturedGamesSkeleton />}>
         <FeaturedGames FeaturedGamesData={featuredGamesData} />

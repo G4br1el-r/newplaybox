@@ -4,7 +4,7 @@ interface FilledButtonProps {
   content: string;
   ButtonType: "link" | "button";
   extraClass?: string;
-  href: string;
+  href?: string;
   onClick?: () => void;
 }
 
@@ -19,7 +19,7 @@ export default function FilledButton({
 
   if (ButtonType === "link") {
     return (
-      <Link href={href} className={className}>
+      <Link href={href || "#"} className={className}>
         {content}
       </Link>
     );
