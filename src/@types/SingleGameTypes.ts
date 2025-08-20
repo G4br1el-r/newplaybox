@@ -15,7 +15,7 @@ export interface SingleGameType {
   description_raw: string;
 }
 
-interface ParentPlatformsType {
+export interface ParentPlatformsType {
   platform: {
     id: number;
     name: string;
@@ -27,7 +27,7 @@ interface DevelopersType {
   name: string;
   slug: string;
 }
-interface GenresType {
+export interface GenresType {
   id: number;
   name: string;
   slug: string;
