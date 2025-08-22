@@ -44,7 +44,7 @@ export default function FeaturedGamesWrapper({
             className={`${isOpen ? "coin-animate" : "hidden"} absolute -top-10 z-99 h-20 w-20 rounded-full object-cover`}
           />
 
-          <div className="group from-purple-dark/50 to-purple-black-hole/50 relative cursor-pointer overflow-hidden rounded border border-purple-500/30 bg-gradient-to-br px-3 py-1 transition-all duration-500 hover:scale-110 hover:border-purple-400/60 hover:bg-purple-800/30">
+          <div className="group from-purple-dark/50 to-purple-black-hole/50 relative top-5 cursor-pointer overflow-hidden rounded border border-purple-500/30 bg-gradient-to-br px-3 py-1 transition-all duration-500 hover:scale-110 hover:border-purple-400/60 hover:bg-purple-800/30">
             <div className="absolute inset-0 -translate-x-full -skew-x-12 transform bg-gradient-to-r from-transparent via-purple-400/20 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
 
             <p className="pixelFont text-purple-neon relative z-10 animate-pulse text-[0.8rem] transition-colors duration-300">

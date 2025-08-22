@@ -36,7 +36,7 @@ export default function PressStart({ gameName }: PressStartProps) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-3">
       <h1
-        className={`to-purple-logo from-cyan-neon-bright max-w-[1400px] bg-gradient-to-r bg-clip-text text-[2rem] font-bold text-transparent transition-all duration-1000 ${isPressStart ? "opacity-100" : "opacity-0"} ease-in-out md:text-[2.4rem] lg:text-[3.2rem] 2xl:text-[3.6rem]`}
+        className={`to-purple-logo from-cyan-neon-bright max-w-[1400px] bg-gradient-to-r bg-clip-text text-[2rem] leading-8 font-bold text-transparent transition-all duration-1000 ${isPressStart ? "opacity-100" : "opacity-0"} ease-in-out md:text-[2.4rem] lg:text-[3.2rem] 2xl:text-[3.6rem]`}
       >
         {gameName}
       </h1>

@@ -1,7 +1,6 @@
-import { getDataForFeaturedGames } from "@/services/api";
 import CardFeaturedGames from "./CardFeaturedGames";
 import FeaturedGamesWrapper from "./FeaturedGamesWrapper";
-import { FeaturedGamesType, TagsType } from "@/@types/FeaturedGamesType";
+import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
 
 interface FeaturedGamesProps {
   FeaturedGamesData: FeaturedGamesType[];

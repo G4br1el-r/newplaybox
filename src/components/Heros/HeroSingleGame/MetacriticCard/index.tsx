@@ -1,0 +1,49 @@
+"use client";
+import { usePressStart } from "@/store/usePressStart";
+import { handleStarsMetacritic } from "@/utils/Metacritic/handleStarsMetacritic";
+import { FaStarHalfAlt } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa6";
+
+interface MetacriticCardProps {
+  metacritic: number;
+  metacritic_url: string;
+}
+
+export default function MetacriticCard({
+  metacritic,
+  metacritic_url,
+}: MetacriticCardProps) {
+  const { isPressStart } = usePressStart();
+  const { starsRatingRender } = handleStarsMetacritic(metacritic);
+  const isMetacriticUrl = Boolean(metacritic_url);
+  return (
+    <a
+      href={isMetacriticUrl ? metacritic_url : ""}
+      className={`${isPressStart ? "opacity-100" : "pointer-events-none cursor-not-allowed opacity-0"} transition-all duration-500 ease-in-out`}
+    >
+      <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center rounded-[3px] bg-green-700 p-1.5">
+          {metacritic}
+        </div>
+        <div className="flex items-center gap-1">
+          {starsRatingRender.map((star, index) => {
+            if (star === "full") {
+              return <FaStar key={index} className="h-5 w-5 text-yellow-500" />;
+            } else if (star === "half") {
+              return (
+                <FaStarHalfAlt
+                  key={index}
+                  className="h-5 w-5 text-yellow-500"
+                />
+              );
+            } else {
+              return (
+                <FaRegStar key={index} className="h-5 w-5 text-gray-500" />
+              );
+            }
+          })}
+        </div>
+      </div>
+    </a>
+  );
+}

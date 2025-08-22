@@ -5,8 +5,8 @@ import { useState } from "react";
 import FilledButton from "@/components/Button/FilledButton";
 import TagsWrapper from "../Tags/TagsWrapper";
 import Link from "next/link";
-import { TagsType } from "@/@types/FeaturedGamesType";
-import { MetacriticScoreColor } from "@/utils/MetacriticScoreColor";
+import { MetacriticScoreColor } from "@/utils/Metacritic/MetacriticScoreColor";
+import { TagsType } from "@/@types/SingleGameTypes";
 
 interface CardFeaturedGamesProps {
   id: number;

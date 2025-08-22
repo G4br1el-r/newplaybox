@@ -16,7 +16,7 @@ export default function CommunitySaying({
   ];
 
   return (
-    <section className="flex w-full flex-col gap-5 px-3">
+    <section className="flex w-screen flex-col gap-5 px-3">
       <h2 className="text-[1.2rem] md:text-[1.8rem]">
         What the Community Is Saying Now
       </h2>
