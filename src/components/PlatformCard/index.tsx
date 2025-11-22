@@ -13,12 +13,13 @@ interface PlatformCardProps {
 }
 
 export default function PlatformCard({
-  TailwindHeight,
-  TailwindWidth,
+  TailwindHeight = "h-12",
+  TailwindWidth = "w-12",
   platform,
 }: PlatformCardProps) {
-  //prettier-ignore
-  const findPlatformIcon = platformsIconList.find((p) => p.id === platform.id)?.reactIcon;
+  const findPlatformIcon = platformsIconList.find(
+    (p) => p.id === platform.id,
+  )?.reactIcon;
 
   if (!findPlatformIcon) return null;
 
@@ -26,9 +27,9 @@ export default function PlatformCard({
 
   return (
     <div
-      className={`${TailwindHeight} ${TailwindWidth} flex w-full items-center justify-center rounded-[3px]`}
+      className={`${TailwindHeight} ${TailwindWidth} flex items-center justify-center rounded-lg bg-white/8 p-2.5 backdrop-blur-xl`}
     >
-      <PlatformIcon className="h-full w-full p-1" />
+      <PlatformIcon className="h-full w-full text-white" />
     </div>
   );
 }

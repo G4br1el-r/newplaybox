@@ -6,14 +6,14 @@ import FilledButton from "@/components/Button/FilledButton";
 import TagsWrapper from "../Tags/TagsWrapper";
 import Link from "next/link";
 import { MetacriticScoreColor } from "@/utils/Metacritic/MetacriticScoreColor";
-import { TagsType } from "@/@types/SingleGameTypes";
+import { Tag } from "@/@types/SingleGameTypes";
 
 interface CardFeaturedGamesProps {
   id: number;
   name: string;
   background_image: string;
   metacritic: number;
-  tags: TagsType[];
+  tags: Tag[];
   fullWidth?: boolean;
 }
 

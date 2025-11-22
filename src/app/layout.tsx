@@ -17,9 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
-        className={`${orbitron.className} bg-blue-darkest bg-center bg-no-repeat tracking-widest text-white`}
+        suppressHydrationWarning
+        className={`${orbitron.className} bg-blue-darkest overflow-x-hidden bg-center bg-no-repeat tracking-widest text-white`}
       >
         <section className="grid w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto]">
           <aside className="col-start-1 col-end-2 row-start-1 row-end-4 hidden xl:block">
@@ -30,7 +31,7 @@ export default function RootLayout({
             <Header />
           </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30">
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 xl:w-[calc(100vw-275px)]">
             {children}
           </main>
         </section>

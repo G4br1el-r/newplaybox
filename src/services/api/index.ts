@@ -1,5 +1,7 @@
 import { CommumitySayingType } from "@/@types/CommunitySayingType";
 import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
+import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
+import { SingleGameScreenshotsType } from "@/@types/SingleGameScreenshotsType";
 import { SingleGameType } from "@/@types/SingleGameTypes";
 import axios from "axios";
 
@@ -21,8 +23,6 @@ export async function getDataForFeaturedGames(): Promise<FeaturedGamesType[]> {
         page_size: 5,
       },
     });
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return response.data.results;
   } catch (err: any) {
@@ -47,7 +47,7 @@ export async function getCommunitySaying(idsFeaturedGame: number[]): Promise<Com
       .filter((comment): comment is CommumitySayingType => comment !== undefined);
     const results = allData.flat();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    
 
     return results;
   } catch (err: any) {
@@ -68,5 +68,43 @@ export async function getSingleGame(id: string) {
     return response.data;
   } catch (err: any) {
     throw new Error(`Failed to fetch single game from API: ${err.message}`);
+  }
+}
+
+export async function getSingleGameScreenshots(id: string) {
+  try {
+    const response = await api.get<SingleGameScreenshotsType>(
+      `/games/${id}/screenshots`,
+      {
+        params: {
+          key: process.env.NEXT_PUBLIC_API_KEY,
+        },
+      },
+    );
+
+    return response.data;
+  } catch (err: any) {
+    throw new Error(
+      `Failed to fetch single game screenshots from API: ${err.message}`,
+    );
+  }
+}
+
+export async function getlistGameForSameSeries(id: string) {
+  try {
+    const response = await api.get<ListNameForSameSeries>(
+      `/games/${id}/game-series`,
+      {
+        params: {
+          key: process.env.NEXT_PUBLIC_API_KEY,
+        },
+      },
+    );
+
+    return response.data;
+  } catch (err: any) {
+    throw new Error(
+      `Failed to fetch List Game For Same Series from API: ${err.message}`,
+    );
   }
 }

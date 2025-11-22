@@ -1,4 +1,4 @@
-import { TagsType } from "@/@types/FeaturedGamesType";
+import { TagsType } from "@/@types/SingleGameTypes";
 import TagsContent from "../TagsContent";
 
 interface TagsWrapperProps {
