@@ -27,11 +27,11 @@ export default function RootLayout({
             <Navbar />
           </aside>
 
-          <header className="col-start-2 col-end-3 row-start-1 row-end-2 xl:hidden">
+          <header className="col-start-2 col-end-3 row-start-1 row-end-2 overflow-x-hidden xl:hidden">
             <Header />
           </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 xl:w-[calc(100vw-275px)]">
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 overflow-x-hidden">
             {children}
           </main>
         </section>

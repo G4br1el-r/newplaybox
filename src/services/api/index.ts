@@ -57,9 +57,9 @@ export async function getCommunitySaying(idsFeaturedGame: number[]): Promise<Com
   }
 }
 
-export async function getSingleGame(id: string) {
+export async function getSingleGame(slug: string) {
   try {
-    const response = await api.get<SingleGameType>(`/games/${id}`, {
+    const response = await api.get<SingleGameType>(`/games/${slug}`, {
       params: {
         key: process.env.NEXT_PUBLIC_API_KEY,
       },
@@ -71,10 +71,10 @@ export async function getSingleGame(id: string) {
   }
 }
 
-export async function getSingleGameScreenshots(id: string) {
+export async function getSingleGameScreenshots(slug: string) {
   try {
     const response = await api.get<SingleGameScreenshotsType>(
-      `/games/${id}/screenshots`,
+      `/games/${slug}/screenshots`,
       {
         params: {
           key: process.env.NEXT_PUBLIC_API_KEY,
@@ -90,10 +90,10 @@ export async function getSingleGameScreenshots(id: string) {
   }
 }
 
-export async function getlistGameForSameSeries(id: string) {
+export async function getlistGameForSameSeries(slug: string) {
   try {
     const response = await api.get<ListNameForSameSeries>(
-      `/games/${id}/game-series`,
+      `/games/${slug}/game-series`,
       {
         params: {
           key: process.env.NEXT_PUBLIC_API_KEY,

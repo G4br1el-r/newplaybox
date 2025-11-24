@@ -11,7 +11,7 @@ export default function HeroSingleGame({
   singleGameData,
 }: HeroSingleGameProps) {
   return (
-    <section className="relative flex h-[100svh] w-screen flex-col items-center gap-2 px-3 pt-25 pb-5 text-center">
+    <section className="relative flex h-[100svh] w-screen flex-col items-center gap-2 px-3 pt-25 pb-5 text-center xl:w-full">
       <BaseImage
         src={singleGameData.background_image}
         alt={singleGameData.name}

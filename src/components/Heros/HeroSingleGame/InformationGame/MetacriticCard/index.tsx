@@ -19,7 +19,7 @@ export default function MetacriticCard({
       className="pointer-events-none cursor-not-allowed opacity-100 transition-all duration-500 ease-in-out"
     >
       <div className="flex items-center justify-center gap-3">
-        <div className="flex items-center rounded-[10px] bg-green-500 p-1.5">
+        <div className="flex items-center justify-center rounded-[10px] bg-green-500 p-1.5 md:h-12 md:w-12">
           {metacritic}
         </div>
         {/* <div className="flex items-center gap-1">

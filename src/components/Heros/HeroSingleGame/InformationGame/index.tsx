@@ -13,9 +13,11 @@ export default function InformationGame({ singleGameData }: SingleGameProps) {
   const { isPressStart } = usePressStart();
 
   const esrbRatingColor: Record<string, string> = {
-    Teen: "border-yellow-500/30 bg-yellow-500/20 text-yellow-400",
-    "Everyone 10+": "border-blue-500/30 bg-blue-500/20 text-blue-400",
-    Mature: "border-red-500/30 bg-red-500/20 text-red-400",
+    Teen: "border-yellow-500/30 bg-yellow-500/20 text-yellow-400 hover:border-yellow-400/50 hover:bg-yellow-500/30 hover:shadow-lg hover:shadow-yellow-500/20",
+    "Everyone 10+":
+      "border-blue-500/30 bg-blue-500/20 text-blue-400 hover:border-blue-400/50 hover:bg-blue-500/30 hover:shadow-lg hover:shadow-blue-500/20",
+    Mature:
+      "border-red-500/30 bg-red-500/20 text-red-400 hover:border-red-400/50 hover:bg-red-500/30 hover:shadow-lg hover:shadow-red-500/20",
   };
 
   const dataReleased = new Date(singleGameData.released);
@@ -29,40 +31,46 @@ export default function InformationGame({ singleGameData }: SingleGameProps) {
 
   return (
     <>
-      <h1 className="max-w-full text-[2rem] leading-tight font-extrabold break-words">
+      <h1 className="hover:text-blue-neon-bright max-w-full cursor-default text-[2rem] leading-tight font-extrabold break-words transition-colors duration-300 md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem]">
         {singleGameData.name}
       </h1>
       <div className="flex h-full w-full flex-col items-center justify-between">
         {/* RATING AND RELEASE */}
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="flex items-center justify-center gap-3">
-            <MetacriticCard
-              metacritic={singleGameData.metacritic}
-              metacritic_url={singleGameData.metacritic_url}
-            />
-            <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 backdrop-blur-xl">
+            {singleGameData.metacritic && (
+              <MetacriticCard
+                metacritic={singleGameData.metacritic}
+                metacritic_url={singleGameData.metacritic_url}
+              />
+            )}
+            <div className="group flex cursor-pointer items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/15 hover:shadow-lg hover:shadow-yellow-500/10">
               <div>
                 {[...Array(5)].map((_, i) => (
                   <span
                     key={i}
-                    className={`text-[1rem] ${
+                    className={`text-[1rem] transition-all duration-300 group-hover:scale-110 md:text-[1.2rem] lg:text-[1.3rem] ${
                       i < Math.round(singleGameData.rating)
-                        ? "text-yellow-400"
-                        : "text-white/20"
+                        ? "text-yellow-400 group-hover:text-yellow-300"
+                        : "text-white/20 group-hover:text-white/30"
                     }`}
+                    style={{
+                      display: "inline-block",
+                      transitionDelay: `${i * 50}ms`,
+                    }}
                   >
                     ★
                   </span>
                 ))}
               </div>
-              <span className="text-[0.7rem] text-white/70">
+              <span className="text-[0.7rem] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[0.9rem] lg:text-[1rem]">
                 {singleGameData.rating}
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl">
-            <CalendarDays className="h-3.5 w-3.5 text-white/70" />
-            <span className="text-[0.7rem] text-white/70">
+          <div className="group flex cursor-pointer items-center gap-3 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/15 hover:shadow-md">
+            <CalendarDays className="group-hover:text-blue-neon-bright h-3.5 w-3.5 text-white/70 transition-all duration-300 group-hover:rotate-12 md:h-4.5 md:w-4.5" />
+            <span className="text-[0.7rem] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[0.8rem]">
               {formatDataReleased}
             </span>
           </div>
@@ -70,29 +78,29 @@ export default function InformationGame({ singleGameData }: SingleGameProps) {
 
         {/* TIME AVG - PLAYERS - ACHIEVEMENTS -ESRB */}
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <div className="flex items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl">
-            <Clock className="text-blue-neon h-3.5 w-3.5" />
-            <span className="text-[0.7rem] text-white/70">
+          <div className="group flex cursor-pointer items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md hover:shadow-blue-500/20">
+            <Clock className="text-blue-neon group-hover:text-blue-neon-bright h-3.5 w-3.5 transition-all duration-500 group-hover:rotate-180 md:h-4 md:w-4" />
+            <span className="text-[0.7rem] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[0.8rem] lg:text-[0.85rem]">
               {singleGameData.playtime}h avg
             </span>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl">
-            <Users className="text-blue-neon h-3.5 w-3.5" />
-            <span className="text-[0.7rem] text-white/70">
+          <div className="group flex cursor-pointer items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md hover:shadow-blue-500/20">
+            <Users className="text-blue-neon group-hover:text-blue-neon-bright h-3.5 w-3.5 transition-all duration-300 group-hover:scale-125 md:h-4 md:w-4" />
+            <span className="text-[0.7rem] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[0.8rem] lg:text-[0.85rem]">
               {singleGameData.added.toLocaleString()} players
             </span>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl">
-            <Trophy className="h-3.5 w-3.5 text-yellow-500" />
-            <span className="text-[0.7rem] text-white/70">
-              {singleGameData.achievements_count} achievements
+          <div className="group flex cursor-pointer items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md hover:shadow-yellow-500/20">
+            <Trophy className="h-3.5 w-3.5 text-yellow-500 transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:text-yellow-400 md:h-4 md:w-4" />
+            <span className="text-[0.7rem] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[0.8rem] lg:text-[0.85rem]">
+              {singleGameData.parent_achievements_count} achievements
             </span>
           </div>
         </div>
 
         {singleGameData.esrb_rating && (
           <div
-            className={`${esrbRatingColor[singleGameData.esrb_rating.name]} rounded-full px-2.5 py-1.5 text-[0.7rem] backdrop-blur-xl`}
+            className={`${esrbRatingColor[singleGameData.esrb_rating.name]} cursor-pointer rounded-full border px-2.5 py-1.5 text-[0.7rem] backdrop-blur-xl transition-all duration-300 hover:scale-110 md:text-[0.8rem] lg:text-[0.85rem]`}
           >
             <span>{singleGameData.esrb_rating.name}</span>
           </div>
@@ -100,21 +108,25 @@ export default function InformationGame({ singleGameData }: SingleGameProps) {
 
         {/* PLATFORMS AND GENRES */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
-          <div className="flex flex-wrap items-center justify-center gap-1.5">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             {singleGameData.parent_platforms.map((platform) => (
-              <PlatformCard
+              <div
                 key={platform.platform.id}
-                platform={platform.platform}
-                TailwindHeight="h-10"
-                TailwindWidth="w-10"
-              />
+                className="transition-all duration-300 hover:scale-125 hover:rotate-3"
+              >
+                <PlatformCard
+                  platform={platform.platform}
+                  TailwindHeight="h-10 md:h-12 lg:h-14"
+                  TailwindWidth="w-10 md:w-12 lg:w-14"
+                />
+              </div>
             ))}
           </div>
           <div className="flex flex-wrap items-center justify-center gap-1.5">
             {singleGameData.genres.map((genre) => (
               <div
                 key={genre.id}
-                className="flex h-8 items-center justify-center rounded-full bg-white/8 p-2.5 text-[0.8rem] backdrop-blur-xl"
+                className="group hover:bg-blue-neon/20 hover:text-blue-neon-bright hover:border-blue-neon/30 flex h-8 cursor-pointer items-center justify-center rounded-full border border-transparent bg-white/8 p-2.5 text-[0.75rem] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 md:h-9 md:text-[0.85rem] lg:h-10 lg:text-[0.9rem]"
               >
                 {genre.name}
               </div>
@@ -124,15 +136,17 @@ export default function InformationGame({ singleGameData }: SingleGameProps) {
 
         {/* DEVELOPER AND PUBLISHER */}
         <div className="flex flex-col items-center justify-center gap-3">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Building2 className="h-4 w-4 text-white/70" />
-            <span className="text-[0.8rem] text-white/70">
+          <div className="group flex cursor-pointer flex-wrap items-center justify-center gap-3 transition-all duration-300 hover:scale-105">
+            <Building2 className="group-hover:text-blue-neon-bright h-3.5 w-3.5 text-white/70 transition-all duration-300 group-hover:scale-110 md:h-4.5 md:w-4.5" />
+            <span className="text-[0.8rem] text-white/70 transition-colors duration-300 group-hover:text-white md:text-[0.9rem] lg:text-[0.95rem]">
               {singleGameData.developers[0]?.name || "Unknown"}
             </span>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="text-[0.6rem] text-white/70">Published by:</span>
-            <span className="text-[0.6rem] text-white/70">
+          <div className="flex cursor-pointer flex-wrap items-center justify-center gap-3 transition-all duration-300 hover:scale-105">
+            <span className="text-[0.6rem] text-white/70 transition-colors duration-300 hover:text-white/90 md:text-[0.7rem] lg:text-[0.75rem] xl:text-[0.8rem]">
+              Published by:
+            </span>
+            <span className="hover:text-blue-neon-bright text-[0.6rem] text-white/70 transition-colors duration-300 md:text-[0.7rem] lg:text-[0.75rem] xl:text-[0.8rem]">
               {singleGameData.publishers[0]?.name || "Unknown"}
             </span>
           </div>

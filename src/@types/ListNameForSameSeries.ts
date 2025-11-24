@@ -5,6 +5,7 @@ export interface ListNameForSameSeries {
 }
 interface SingleGame {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   metacritic: number;

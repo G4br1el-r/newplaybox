@@ -1,9 +1,10 @@
-import { TagsType } from "./SingleGameTypes";
+import { Tag } from "./SingleGameTypes";
 
 export interface FeaturedGamesType {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   metacritic: number;
-  tags: TagsType[];
+  tags: Tag[];
 }

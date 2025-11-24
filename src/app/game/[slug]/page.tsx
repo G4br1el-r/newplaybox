@@ -1,5 +1,5 @@
+import { Footer } from "@/components/Footer";
 import HeroSingleGame from "@/components/Heros/HeroSingleGame";
-import GameDescriptionSection from "@/components/Heros/HeroSingleGame/GameDescription";
 import GameDescription from "@/components/Heros/HeroSingleGame/GameDescription";
 import GameDetails from "@/components/Heros/HeroSingleGame/GameDetails";
 import {
@@ -11,23 +11,25 @@ import {
 export default async function SingleGame({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
-  const { id } = await params;
-  const singleGameData = await getSingleGame(id);
-  const singleGameScreenshotsData = await getSingleGameScreenshots(id);
-  const listGameForSameSeries = await getlistGameForSameSeries(id);
+  const { slug } = await params;
+
+  const singleGameData = await getSingleGame(slug);
+  const singleGameScreenshotsData = await getSingleGameScreenshots(slug);
+  const listGameForSameSeries = await getlistGameForSameSeries(slug);
 
   return (
     <>
       <HeroSingleGame singleGameData={singleGameData} />
-      <section className="via-blue-darkest/80 to-blue-darkest flex w-screen flex-col gap-15 bg-gradient-to-b from-transparent px-3">
+      <section className="via-blue-darkest/80 to-blue-darkest flex w-screen flex-col gap-15 bg-gradient-to-b from-transparent px-3 xl:w-full">
         <GameDescription description={singleGameData.description_raw} />
         <GameDetails
           singleGameData={singleGameData}
           singleGameScreenshotsData={singleGameScreenshotsData}
           listGameForSameSeries={listGameForSameSeries}
         />
+        <Footer />
       </section>
     </>
   );
