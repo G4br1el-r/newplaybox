@@ -1,15 +1,13 @@
 import { SingleGameType } from "@/@types/SingleGameTypes";
 import BaseImage from "@/components/BaseImage";
-import PressStart from "./PressStart";
-import InformationGame from "./InformationGame";
+import PressStart from "../../PressStart";
+import GameHeroInformation from "../GameHeroInformation";
 
-interface HeroSingleGameProps {
+interface HeroMainProps {
   singleGameData: SingleGameType;
 }
 
-export default function HeroSingleGame({
-  singleGameData,
-}: HeroSingleGameProps) {
+export default function HeroMain({ singleGameData }: HeroMainProps) {
   return (
     <section className="relative flex h-[100svh] w-screen flex-col items-center gap-2 px-3 pt-25 pb-5 text-center xl:w-full">
       <BaseImage
@@ -20,7 +18,7 @@ export default function HeroSingleGame({
       />
       <div className="from-blue-darkest via-blue-darkest/60 to-blue-darkest fixed top-0 left-0 -z-9 h-full w-full bg-gradient-to-b" />
       <PressStart />
-      <InformationGame singleGameData={singleGameData} />
+      <GameHeroInformation singleGameData={singleGameData} />
     </section>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
+
 import { SingleGameType } from "@/@types/SingleGameTypes";
-import MetacriticCard from "./MetacriticCard";
 import { usePressStart } from "@/store/usePressStart";
+import MetacriticCard from "../../GameInformation/MetacriticCard";
 import { Building2, CalendarDays, Clock, Trophy, Users } from "lucide-react";
 import PlatformCard from "@/components/PlatformCard";
 
@@ -9,7 +10,9 @@ interface SingleGameProps {
   singleGameData: SingleGameType;
 }
 
-export default function InformationGame({ singleGameData }: SingleGameProps) {
+export default function GameHeroInformation({
+  singleGameData,
+}: SingleGameProps) {
   const { isPressStart } = usePressStart();
 
   const esrbRatingColor: Record<string, string> = {

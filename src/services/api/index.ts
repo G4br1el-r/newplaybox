@@ -3,108 +3,155 @@ import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
 import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
 import { SingleGameScreenshotsType } from "@/@types/SingleGameScreenshotsType";
 import { SingleGameType } from "@/@types/SingleGameTypes";
-import axios from "axios";
+import axios, { AxiosError, AxiosInstance } from "axios";
 
-const api = axios.create({
+const api: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_DEFAULT_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
+  timeout: 10000,
+  params: {
+    key: process.env.NEXT_PUBLIC_API_KEY,
+  },
 });
 
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public statusCode?: number,
+    public endpoint?: string,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+function handleApiError(error: unknown, endpoint: string): never {
+  if (axios.isAxiosError(error)) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response) {
+      const status = axiosError.response.status;
+
+      switch (status) {
+        case 404:
+          throw new ApiError(
+            `Recurso não encontrado: ${endpoint}`,
+            404,
+            endpoint,
+          );
+        case 429:
+          throw new ApiError(
+            "Muitas requisições. Aguarde alguns instantes e tente novamente.",
+            429,
+            endpoint,
+          );
+        case 500:
+        case 502:
+        case 503:
+          throw new ApiError(
+            "Erro no servidor da API. Tente novamente mais tarde.",
+            status,
+            endpoint,
+          );
+        default:
+          throw new ApiError(
+            `Erro na requisição: ${axiosError.message}`,
+            status,
+            endpoint,
+          );
+      }
+    } else if (axiosError.request) {
+      throw new ApiError(
+        "Sem resposta do servidor. Verifique sua conexão com a internet.",
+        undefined,
+        endpoint,
+      );
+    }
+  }
+
+  throw new ApiError(
+    `Erro inesperado ao buscar dados de ${endpoint}`,
+    undefined,
+    endpoint,
+  );
+}
+
 export async function getDataForFeaturedGames(): Promise<FeaturedGamesType[]> {
-  const randomNumberForPage = Math.floor(Math.random() * 10) + 1;
+  const randomNumberForPage = Math.floor(Math.random() * 20) + 1;
 
   try {
     const response = await api.get<{ results: FeaturedGamesType[] }>("/games", {
       params: {
-        key: process.env.NEXT_PUBLIC_API_KEY,
         page: randomNumberForPage,
         page_size: 5,
       },
     });
 
     return response.data.results;
-  } catch (err: any) {
-    throw new Error(`Failed to fetch games from API: ${err.message}`);
+  } catch (error) {
+    handleApiError(error, "/games");
   }
 }
 
-//prettier-ignore
-export async function getCommunitySaying(idsFeaturedGame: number[]): Promise<CommumitySayingType[]> {
+export async function getCommunitySaying(
+  idsFeaturedGame: number[],
+): Promise<CommumitySayingType[]> {
   try {
     const allPromisesFeaturedGames = idsFeaturedGame.map((idGame) =>
-      api.get<{ results: CommumitySayingType[] }>(`/games/${idGame}/reddit`, {
-        params: {
-          key: process.env.NEXT_PUBLIC_API_KEY,
-        },
-      }),
+      api.get<{ results: CommumitySayingType[] }>(`/games/${idGame}/reddit`),
     );
 
     const allResponse = await Promise.all(allPromisesFeaturedGames);
+
     const allData = allResponse
       .map((response) => response.data.results[0])
-      .filter((comment): comment is CommumitySayingType => comment !== undefined);
-    const results = allData.flat();
+      .filter(
+        (comment): comment is CommumitySayingType => comment !== undefined,
+      );
 
-    
-
-    return results;
-  } catch (err: any) {
-    throw new Error(
-      `Failed to fetch community saying from API: ${err.message}`,
-    );
+    return allData;
+  } catch (error) {
+    handleApiError(error, "/games/*/reddit");
   }
 }
 
-export async function getSingleGame(slug: string) {
+export async function getSingleGame(slug: string): Promise<SingleGameType> {
   try {
-    const response = await api.get<SingleGameType>(`/games/${slug}`, {
-      params: {
-        key: process.env.NEXT_PUBLIC_API_KEY,
-      },
-    });
-
+    const response = await api.get<SingleGameType>(`/games/${slug}`);
     return response.data;
-  } catch (err: any) {
-    throw new Error(`Failed to fetch single game from API: ${err.message}`);
+  } catch (error) {
+    handleApiError(error, `/games/${slug}`);
   }
 }
 
-export async function getSingleGameScreenshots(slug: string) {
+export async function getSingleGameScreenshots(
+  slug: string,
+): Promise<SingleGameScreenshotsType> {
   try {
     const response = await api.get<SingleGameScreenshotsType>(
       `/games/${slug}/screenshots`,
-      {
-        params: {
-          key: process.env.NEXT_PUBLIC_API_KEY,
-        },
-      },
     );
-
     return response.data;
-  } catch (err: any) {
-    throw new Error(
-      `Failed to fetch single game screenshots from API: ${err.message}`,
-    );
+  } catch (error) {
+    handleApiError(error, `/games/${slug}/screenshots`);
   }
 }
 
-export async function getlistGameForSameSeries(slug: string) {
+export async function getlistGameForSameSeries(
+  slug: string,
+): Promise<ListNameForSameSeries> {
+  // 🔥 TESTE: Delay de 10 segundos
+  await new Promise((resolve) => setTimeout(resolve, 10000));
+
   try {
     const response = await api.get<ListNameForSameSeries>(
       `/games/${slug}/game-series`,
-      {
-        params: {
-          key: process.env.NEXT_PUBLIC_API_KEY,
-        },
-      },
     );
 
     return response.data;
-  } catch (err: any) {
-    throw new Error(
-      `Failed to fetch List Game For Same Series from API: ${err.message}`,
-    );
+  } catch (error) {
+    handleApiError(error, `/games/${slug}/game-series`);
   }
 }
