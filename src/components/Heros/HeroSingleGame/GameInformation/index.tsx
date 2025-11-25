@@ -1,7 +1,6 @@
 import { SingleGameType } from "@/@types/SingleGameTypes";
 import GameDescriptionSection from "./GameDescription";
 import BaseWrapperInformation from "./BaseWrapperInformation";
-import Screenshots from "./ScreenshotsSection/Screenshots";
 import TagsGame from "./Tags";
 import CommunityFeedBack from "./CommunityFeedBack";
 import PlayerActivity from "./PlayerActivity";
@@ -11,6 +10,7 @@ import WrapperErrorBoundary from "../../../ErrorBoundary/WrapperErrorBoundary";
 import WrapperGameSeriesAsync from "./ListGameForSameSeriesSection/WrapperSameSeriesAsync";
 import { Suspense } from "react";
 import GameForSameSeriesSkeleton from "@/components/SkeletonScreen/HeroSingleGameSkeletons/GameForSameSeriesSkeleton";
+import WrapperScreenshotsAsync from "./ScreenshotsSection/WrapperScreenshotsSync";
 
 interface GameInformationProps {
   singleGameData: SingleGameType;
@@ -54,7 +54,11 @@ export default function GameInformation({
         informationTitle="Screenshots"
         informationSubTitle="Take a closer look at the game's visuals and atmosphere."
       >
-        <Screenshots />
+        <WrapperErrorBoundary>
+          <Suspense fallback={<GameForSameSeriesSkeleton />}>
+            <WrapperScreenshotsAsync slug={singleGameData.slug} />
+          </Suspense>
+        </WrapperErrorBoundary>
       </BaseWrapperInformation>
 
       {/* COMMUNITY FEEDBACK */}

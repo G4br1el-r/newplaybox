@@ -142,9 +142,6 @@ export async function getSingleGameScreenshots(
 export async function getlistGameForSameSeries(
   slug: string,
 ): Promise<ListNameForSameSeries> {
-  // 🔥 TESTE: Delay de 10 segundos
-  await new Promise((resolve) => setTimeout(resolve, 10000));
-
   try {
     const response = await api.get<ListNameForSameSeries>(
       `/games/${slug}/game-series`,

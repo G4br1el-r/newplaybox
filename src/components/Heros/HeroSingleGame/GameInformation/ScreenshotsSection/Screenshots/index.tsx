@@ -1,24 +1,32 @@
 "use client";
+import { SingleGameScreenshotsType } from "@/@types/SingleGameScreenshotsType";
 import Image from "next/image";
 import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-export default function Screenshots() {
+interface ScreenshotsProps {
+  singleGameScreenshotsData: SingleGameScreenshotsType;
+}
+export default function Screenshots({
+  singleGameScreenshotsData,
+}: ScreenshotsProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
-  // const slides = singleGameScreenshotsData.results.map((screenshot) => ({
-  //   src: screenshot.image,
-  //   alt: `${name} screenshot`,
-  // }));
+  const slides = singleGameScreenshotsData.results.map((screenshot) => ({
+    src: screenshot.image,
+    alt: `${screenshot.id} screenshot`,
+  }));
+
+  const hasImage = singleGameScreenshotsData.results.length > 0;
 
   return (
     <>
-      {(0 > 0 && (
+      {hasImage && (
         <>
-          <div className="grid grid-cols-2 gap-5 lg:grid-cols-3 2xl:grid-cols-4">
+          <div className="grid w-full grid-cols-2 gap-5 md:grid-cols-3 2xl:grid-cols-4">
             {singleGameScreenshotsData.results.map((screenshot, idx) => (
               <div
                 key={screenshot.id}
@@ -30,7 +38,7 @@ export default function Screenshots() {
               >
                 <Image
                   src={screenshot.image}
-                  alt={`${name} screenshot ${idx + 1}`}
+                  alt={`screenshot ${screenshot.id}`}
                   fill
                   className="object-cover"
                   loading="lazy"
@@ -61,7 +69,7 @@ export default function Screenshots() {
             }}
           />
         </>
-      )) || <div>No screenshots</div>}
+      )}
     </>
   );
 }

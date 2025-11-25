@@ -1,5 +1,4 @@
 export default function GameForSameSeriesSkeleton() {
-  console.log("entrou aqui!!!!!!!!");
   return (
     <div className="flex h-full w-full flex-col gap-3 md:gap-4 lg:gap-5">
       {/* Badge "Related Games" skeleton */}

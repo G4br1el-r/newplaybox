@@ -5,7 +5,6 @@ import CardFeaturedGames from "@/components/FeaturedGames/CardFeaturedGames";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { getlistGameForSameSeries } from "@/services/api";
 import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
 
 interface CarrouselSameSeriesGameProps {
