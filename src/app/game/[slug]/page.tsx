@@ -1,8 +1,15 @@
 import { Footer } from "@/components/Footer";
 import GameInformation from "@/components/Heros/HeroSingleGame/GameInformation";
 import HeroMain from "@/components/Heros/HeroSingleGame/Main/Background";
-
 import { getSingleGame } from "@/services/api";
+import { buildGameMetadata } from "@/utils/MetaData";
+import { Metadata } from "next";
+
+//prettier-ignore
+export async function generateMetadata({ params }: { params: { slug: string }}): Promise<Metadata> {
+  const { slug } = await params;
+  return await buildGameMetadata(slug);
+}
 
 export default async function SingleGame({
   params,

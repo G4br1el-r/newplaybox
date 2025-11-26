@@ -11,6 +11,7 @@ import WrapperGameSeriesAsync from "./ListGameForSameSeriesSection/WrapperSameSe
 import { Suspense } from "react";
 import GameForSameSeriesSkeleton from "@/components/SkeletonScreen/HeroSingleGameSkeletons/GameForSameSeriesSkeleton";
 import WrapperScreenshotsAsync from "./ScreenshotsSection/WrapperScreenshotsSync";
+import ScreenshotsGameSkeleton from "@/components/SkeletonScreen/HeroSingleGameSkeletons/ScreenshotsGameSkeleton";
 
 interface GameInformationProps {
   singleGameData: SingleGameType;
@@ -55,7 +56,7 @@ export default function GameInformation({
         informationSubTitle="Take a closer look at the game's visuals and atmosphere."
       >
         <WrapperErrorBoundary>
-          <Suspense fallback={<GameForSameSeriesSkeleton />}>
+          <Suspense fallback={<ScreenshotsGameSkeleton />}>
             <WrapperScreenshotsAsync slug={singleGameData.slug} />
           </Suspense>
         </WrapperErrorBoundary>

@@ -133,6 +133,7 @@ export async function getSingleGameScreenshots(
     const response = await api.get<SingleGameScreenshotsType>(
       `/games/${slug}/screenshots`,
     );
+
     return response.data;
   } catch (error) {
     handleApiError(error, `/games/${slug}/screenshots`);
@@ -146,7 +147,6 @@ export async function getlistGameForSameSeries(
     const response = await api.get<ListNameForSameSeries>(
       `/games/${slug}/game-series`,
     );
-
     return response.data;
   } catch (error) {
     handleApiError(error, `/games/${slug}/game-series`);

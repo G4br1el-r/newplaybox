@@ -7,8 +7,51 @@ import Navbar from "@/components/Header/Navbar";
 const orbitron = Orbitron({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Playbox | O próximo nível do entretenimento.",
-  description: "Jogos que desafiam. Experiências que marcam.",
+  title: "Playbox | The Next Level of Entertainment",
+  description:
+    "Challenging games. Memorable experiences. Discover thousands of games, reviews, and ratings.",
+  keywords: [
+    "games",
+    "video games",
+    "gaming",
+    "game reviews",
+    "playstation",
+    "xbox",
+    "pc games",
+  ],
+
+  applicationName: "Playbox",
+
+  robots: "index, follow",
+
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "",
+    siteName: "Playbox",
+    title: "Playbox | The Next Level of Entertainment",
+    description: "Challenging games. Memorable experiences.",
+    images: [
+      {
+        url: "",
+        width: 1200,
+        height: 630,
+        alt: "Playbox",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Playbox | The Next Level of Entertainment",
+    description: "Challenging games. Memorable experiences.",
+    images: [""],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +74,7 @@ export default function RootLayout({
             <Header />
           </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 xl:w-[calc(100vw-275px)]">
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 overflow-x-hidden">
             {children}
           </main>
         </section>
