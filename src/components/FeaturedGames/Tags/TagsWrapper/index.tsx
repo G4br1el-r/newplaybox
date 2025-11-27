@@ -1,9 +1,9 @@
-import { TagsType } from "@/@types/SingleGameTypes";
+import { Tag } from "@/@types/SingleGameTypes";
 import TagsContent from "../TagsContent";
 
 interface TagsWrapperProps {
   isOpen: boolean;
-  tags: TagsType[];
+  tags: Tag[];
 }
 
 export default function TagsWrapper({ isOpen, tags }: TagsWrapperProps) {
