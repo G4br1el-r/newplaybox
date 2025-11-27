@@ -18,9 +18,7 @@ export default async function Home() {
     <>
       <HeroHome />
       {/* <HeroSubtitle /> */}
-      <Suspense fallback={<FeaturedGamesSkeleton />}>
-        <FeaturedGames FeaturedGamesData={featuredGamesData} />
-      </Suspense>
+      <FeaturedGames FeaturedGamesData={featuredGamesData} />
       <CommunitySaying CommunitySayingData={communitySayingData} />
       <CodeReveal />
       <Footer />

@@ -74,7 +74,7 @@ export default function RootLayout({
             <Header />
           </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-30 overflow-x-hidden">
+          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-18 overflow-x-hidden">
             {children}
           </main>
         </section>

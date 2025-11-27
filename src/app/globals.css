@@ -3,6 +3,9 @@
 @plugin 'tailwind-scrollbar';
 
 @theme {
+  /* ===== Breakpoints ===== */
+  --breakpoint-xs: 414px;
+
   /* ===== Base Colors ===== */
   --color-deep-black: #0a0e1a;
   --color-white: #ffffff;

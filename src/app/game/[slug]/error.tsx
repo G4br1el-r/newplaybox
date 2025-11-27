@@ -10,7 +10,6 @@ export default function Error({
   return (
     <div className="via-blue-darkest/80 to-blue-darkest flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-900 px-4">
       <div className="w-full max-w-md text-center">
-        {/* Ícone de erro */}
         <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-red-500/10 backdrop-blur-xl">
           <svg
             className="h-12 w-12 text-red-500"
@@ -27,18 +26,15 @@ export default function Error({
           </svg>
         </div>
 
-        {/* Título */}
         <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
           Jogo não encontrado
         </h1>
 
-        {/* Descrição */}
         <p className="mb-8 text-sm text-white/70 md:text-base lg:text-lg">
           Não foi possível carregar as informações deste jogo. Ele pode não
           existir ou estar temporariamente indisponível.
         </p>
 
-        {/* Botões */}
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={reset}
@@ -55,7 +51,6 @@ export default function Error({
           </a>
         </div>
 
-        {/* Detalhes técnicos (só em desenvolvimento) */}
         {process.env.NODE_ENV === "development" && (
           <details className="mt-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-left backdrop-blur-xl">
             <summary className="cursor-pointer text-sm font-medium text-red-400 hover:text-red-300">

@@ -27,8 +27,8 @@ export function Footer() {
         </a>
       </div>
       <div className="border-purple-black-hole w-full border-t"></div>
-      <p className="text-purple-black-hole text-[0.8rem]">
-        © 2025 Playbox. Designed & Developed by Gabriel Rodrigues.
+      <p className="text-purple-black-hole py-2 text-[0.8rem]">
+        © 2025 Playbox. Designed & Developed with 💜 by Gabriel Rodrigues.
       </p>
     </footer>
   );

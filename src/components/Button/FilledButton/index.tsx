@@ -15,7 +15,7 @@ export default function FilledButton({
   href,
   onClick,
 }: FilledButtonProps) {
-  const className = `from-purple-dark ${extraClass} to-purple-black-hole h-full w-full cursor-pointer rounded-[3px] bg-gradient-to-br flex`;
+  const className = `from-purple-600 via-purple-700 to-purple-900 ${extraClass} h-full w-full cursor-pointer rounded-lg bg-gradient-to-br flex hover:from-purple-500 hover:via-purple-600 hover:to-purple-800 transition-all duration-300 border border-purple-500/30 hover:border-purple-400/50`;
 
   if (ButtonType === "link") {
     return (

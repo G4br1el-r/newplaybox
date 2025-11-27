@@ -1,4 +1,3 @@
-// CardFeaturedGamesSkeleton.tsx
 interface CardSkeletonProps {
   fullWidth?: boolean;
 }

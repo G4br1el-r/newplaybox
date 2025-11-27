@@ -15,7 +15,7 @@ export default function OutlineButton({
   href,
   onClick,
 }: OutlineButtonProps) {
-  const className = `border-purple-black-hole ${extraClass} h-full w-full cursor-pointer rounded-[3px] border text-white flex`;
+  const className = `border-purple-500/50 ${extraClass} h-full w-full cursor-pointer rounded-lg border-2 text-white flex backdrop-blur-sm hover:bg-purple-500/10 transition-all duration-300`;
 
   if (ButtonType === "link") {
     return (
