@@ -1,25 +1,24 @@
-import { Suspense } from "react";
 import CodeReveal from "@/components/CodeReveal";
 import CommunitySaying from "@/components/CommunitySaying";
 import FeaturedGames from "@/components/FeaturedGames";
 import { Footer } from "@/components/Footer";
 import HeroHome from "@/components/Heros/HeroHome";
-import HeroSubtitle from "@/components/HeroSubtitle";
-import FeaturedGamesSkeleton from "@/components/FeaturedGames/SkeletonScreen/FeaturedGamesSkeleton";
 import { getCommunitySaying, getDataForFeaturedGames } from "@/services/api";
 
 export const revalidate = 10;
+
+//prettier-ignore
 export default async function Home() {
   const featuredGamesData = await getDataForFeaturedGames();
-  //prettier-ignore
-  const idsFeaturedGames = featuredGamesData.reduce((acc, game) => { acc.push(game.id); return acc; }, [] as number[]);
+  const orderedDescFeaturedGamesData = featuredGamesData.sort((game1, game2) => game2.metacritic - game1.metacritic);
+  const idsFeaturedGames = orderedDescFeaturedGamesData.reduce((acc, game) => { acc.push(game.id); return acc; }, [] as number[]);
   const communitySayingData = await getCommunitySaying(idsFeaturedGames);
 
   return (
     <>
       <HeroHome />
       {/* <HeroSubtitle /> */}
-      <FeaturedGames FeaturedGamesData={featuredGamesData} />
+      <FeaturedGames FeaturedGamesData={orderedDescFeaturedGamesData} />
       <CommunitySaying CommunitySayingData={communitySayingData} />
       <CodeReveal />
       <Footer />

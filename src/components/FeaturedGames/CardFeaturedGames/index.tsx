@@ -32,7 +32,6 @@ export default function CardFeaturedGames({
   const isMetacriticRating = metacritic > 0;
 
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <div
       className={`group ${fullWidth && "md:col-span-2"} relative h-[420px] w-full overflow-hidden rounded-xl border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-blue-900/20 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 md:h-[450px]`}
