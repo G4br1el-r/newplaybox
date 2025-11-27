@@ -17,7 +17,7 @@ export default function HeroHome() {
           into the ultimate gaming experience
         </p>
 
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
             <span className="text-[0.75rem] font-bold text-cyan-400 md:text-[0.85rem]">
               10,000+ Games
