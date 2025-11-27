@@ -6,7 +6,11 @@ import { buildGameMetadata } from "@/utils/MetaData";
 import { Metadata } from "next";
 
 //prettier-ignore
-export async function generateMetadata({ params }: { params: { slug: string }}): Promise<Metadata> {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
   const { slug } = await params;
   return await buildGameMetadata(slug);
 }
@@ -14,7 +18,7 @@ export async function generateMetadata({ params }: { params: { slug: string }}):
 export default async function SingleGame({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
