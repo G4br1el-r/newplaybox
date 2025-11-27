@@ -82,7 +82,6 @@ export async function getDataForFeaturedGames(): Promise<FeaturedGamesType[]> {
   const randomNumberForPage = Math.floor(Math.random() * 20) + 1;
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
     const response = await api.get<{ results: FeaturedGamesType[] }>("/games", {
       params: {
         page: randomNumberForPage,

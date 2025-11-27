@@ -8,6 +8,7 @@ import HeroSubtitle from "@/components/HeroSubtitle";
 import FeaturedGamesSkeleton from "@/components/FeaturedGames/SkeletonScreen/FeaturedGamesSkeleton";
 import { getCommunitySaying, getDataForFeaturedGames } from "@/services/api";
 
+export const revalidate = 10;
 export default async function Home() {
   const featuredGamesData = await getDataForFeaturedGames();
   //prettier-ignore
