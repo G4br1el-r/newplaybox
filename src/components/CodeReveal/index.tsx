@@ -16,14 +16,12 @@ export default function CodeReveal() {
       </div>
 
       <div className="relative flex w-full flex-col items-center justify-center rounded-xl border-2 border-purple-500/30 bg-gradient-to-br from-gray-900 via-black to-gray-900 px-5 pt-10 pb-6 shadow-[0_0_50px_rgba(139,92,246,0.2)] md:px-6 md:pt-12 md:pb-8">
-        {/* Terminal dots */}
         <div className="absolute top-3 left-3 flex gap-1.5 md:top-4 md:left-4 md:gap-2">
           <div className="h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)] md:h-3 md:w-3" />
           <div className="h-2.5 w-2.5 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.8)] md:h-3 md:w-3" />
           <div className="h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)] md:h-3 md:w-3" />
         </div>
 
-        {/* Terminal title */}
         <p className="w-full text-center text-[0.85rem] font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] md:text-[1rem] lg:text-[1.1rem]">
           gaming-universe-terminal
         </p>

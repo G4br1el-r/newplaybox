@@ -31,8 +31,7 @@ export default function GameInformation({
     singleGameData.stores && singleGameData.stores.length > 0;
 
   return (
-    <section className="flex h-full w-full flex-col gap-15 md:gap-20 lg:gap-25">
-      {/* DESCRIPTION */}
+    <section className="flex h-full w-full flex-col gap-15 md:gap-20 lg:px-5 xl:gap-25">
       <BaseWrapperInformation
         informationTag="Game Overview"
         informationTitle="About this title"
@@ -41,7 +40,6 @@ export default function GameInformation({
         <GameDescriptionSection description={singleGameData.description_raw} />
       </BaseWrapperInformation>
 
-      {/* TAGS */}
       <BaseWrapperInformation
         informationTag="Game Features"
         informationTitle="Tags"
@@ -49,7 +47,6 @@ export default function GameInformation({
         <TagsGame singleGameTags={singleGameData.tags} />
       </BaseWrapperInformation>
 
-      {/* SCREENSHOTS */}
       <BaseWrapperInformation
         informationTag="Gallery"
         informationTitle="Screenshots"
@@ -62,7 +59,6 @@ export default function GameInformation({
         </WrapperErrorBoundary>
       </BaseWrapperInformation>
 
-      {/* COMMUNITY FEEDBACK */}
       {hasRatings && (
         <BaseWrapperInformation
           informationTag="Player Ratings"
@@ -74,7 +70,6 @@ export default function GameInformation({
         </BaseWrapperInformation>
       )}
 
-      {/* PLAYER ACTIVITY */}
       <BaseWrapperInformation
         informationTag="Community Stats"
         informationTitle="Player Activity"
@@ -86,7 +81,6 @@ export default function GameInformation({
         )}
       </BaseWrapperInformation>
 
-      {/* CONNECT & EXPLORE */}
       <BaseWrapperInformation
         informationTag="External Links"
         informationTitle="Connect & Explore"
@@ -98,7 +92,6 @@ export default function GameInformation({
         />
       </BaseWrapperInformation>
 
-      {/* AVAILABLE AT */}
       <BaseWrapperInformation
         informationTag="Where to Buy"
         informationTitle="Available At"
@@ -106,7 +99,6 @@ export default function GameInformation({
         {hasStores && <AvailableAt singleGameStores={singleGameData.stores} />}
       </BaseWrapperInformation>
 
-      {/* Games From The Series */}
       <BaseWrapperInformation
         informationTag="Related Games"
         informationTitle="Game From The Series"

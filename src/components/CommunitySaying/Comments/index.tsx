@@ -39,10 +39,8 @@ export default function Comments({
       rel="noopener noreferrer"
       className="group relative h-auto min-h-[240px] w-full rounded-xl border-2 border-purple-500/30 bg-gradient-to-br from-purple-900/40 via-blue-900/30 to-purple-900/40 p-4 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] md:min-h-[260px] md:p-5"
     >
-      {/* Accent line */}
       <div className="absolute top-0 left-0 h-full w-1 rounded-l-xl bg-gradient-to-b from-purple-500 via-cyan-500 to-purple-500" />
 
-      {/* Live indicator */}
       <div className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full border border-green-500/40 bg-green-500/20 px-2.5 py-1">
         <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
         <span className="text-[0.65rem] font-semibold text-green-400 md:text-[0.7rem]">
@@ -51,7 +49,6 @@ export default function Comments({
       </div>
 
       <div className="flex h-full w-full flex-col justify-between gap-4 md:gap-5">
-        {/* Header */}
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3 pr-16">
             <h3 className="line-clamp-2 text-[0.95rem] leading-tight font-bold text-purple-300 transition-colors group-hover:text-purple-200 md:text-[1.05rem] lg:text-[1.15rem]">
@@ -59,7 +56,6 @@ export default function Comments({
             </h3>
           </div>
 
-          {/* User info */}
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2.5">
               <div className="relative">
@@ -87,12 +83,10 @@ export default function Comments({
           </div>
         </div>
 
-        {/* Content */}
         <p className="line-clamp-3 text-[0.8rem] leading-relaxed text-white/80 transition-colors group-hover:text-white/90 md:line-clamp-4 md:text-[0.85rem] lg:text-[0.9rem]">
           {formattedText}
         </p>
 
-        {/* Stats */}
         <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-3">
           <div className="flex items-center gap-1.5 rounded-lg bg-white/5 px-2.5 py-1">
             <span className="text-[0.7rem] md:text-[0.75rem]">👁️</span>

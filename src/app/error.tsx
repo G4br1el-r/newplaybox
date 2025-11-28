@@ -12,7 +12,7 @@ interface ErrorProps {
 export default function Error({ error, reset }: ErrorProps) {
   const handleReload = () => window.location.reload();
   return (
-    <div className="flex h-[100dvh] w-full flex-col items-center justify-between px-3 pt-25 pb-5">
+    <div className="flex h-[100dvh] w-full flex-col items-center justify-between px-3 pt-25 pb-15">
       <div className="relative mb-8 md:mb-12">
         <div className="bg-gradient-radial absolute inset-0 from-red-600/30 via-purple-600/20 to-transparent blur-3xl" />
         <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-4 border-red-500/30 bg-gradient-to-br from-red-900/40 to-purple-900/40 shadow-[0_0_50px_rgba(239,68,68,0.3)] backdrop-blur-xl md:h-40 md:w-40 lg:h-48 lg:w-48">
@@ -41,14 +41,6 @@ export default function Error({ error, reset }: ErrorProps) {
           We encountered an unexpected error while loading this page. Don't
           worry, our team has been notified and we're working on it!
         </p>
-
-        {process.env.NODE_ENV === "development" && (
-          <div className="w-full max-w-2xl rounded-xl border-2 border-red-500/20 bg-black/50 p-4 backdrop-blur-sm md:p-6">
-            <p className="text-left font-mono text-[0.75rem] break-words text-red-300/80 md:text-[0.85rem]">
-              {error.message}
-            </p>
-          </div>
-        )}
       </div>
 
       <div className="flex w-full max-w-md flex-col items-center gap-3 md:flex-row">

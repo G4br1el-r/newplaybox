@@ -38,7 +38,6 @@ export default function GameHeroInformation({
         {singleGameData.name}
       </h1>
       <div className="flex h-full w-full flex-col items-center justify-between">
-        {/* RATING AND RELEASE */}
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="flex items-center justify-center gap-3">
             {singleGameData.metacritic && (
@@ -79,7 +78,6 @@ export default function GameHeroInformation({
           </div>
         </div>
 
-        {/* TIME AVG - PLAYERS - ACHIEVEMENTS -ESRB */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="group flex cursor-pointer items-center gap-2 rounded-full bg-white/8 px-2.5 py-1.5 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md hover:shadow-blue-500/20">
             <Clock className="text-blue-neon group-hover:text-blue-neon-bright h-3.5 w-3.5 transition-all duration-500 group-hover:rotate-180 md:h-4 md:w-4" />
@@ -109,7 +107,6 @@ export default function GameHeroInformation({
           </div>
         )}
 
-        {/* PLATFORMS AND GENRES */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {singleGameData.parent_platforms.map((platform) => (
@@ -137,7 +134,6 @@ export default function GameHeroInformation({
           </div>
         </div>
 
-        {/* DEVELOPER AND PUBLISHER */}
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="group flex cursor-pointer flex-wrap items-center justify-center gap-3 transition-all duration-300 hover:scale-105">
             <Building2 className="group-hover:text-blue-neon-bright h-3.5 w-3.5 text-white/70 transition-all duration-300 group-hover:scale-110 md:h-4.5 md:w-4.5" />

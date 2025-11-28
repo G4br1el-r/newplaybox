@@ -36,14 +36,12 @@ export default function CardFeaturedGames({
     <div
       className={`group ${fullWidth && "md:col-span-2"} relative h-[420px] w-full overflow-hidden rounded-xl border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-blue-900/20 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 md:h-[450px]`}
     >
-      {/* Enhanced gradient overlay */}
       <Link
         prefetch
         href={`/game/${slug}`}
         className="absolute top-0 left-0 z-10 h-full w-full rounded-xl transition-all duration-500"
       >
         <div className="flex h-full flex-col justify-between p-4 md:p-5">
-          {/* Title with better visibility */}
           <div
             className={`${pathname === "/" ? "justify-between" : "justify-center"} flex items-start justify-between`}
           >
@@ -51,7 +49,6 @@ export default function CardFeaturedGames({
               {name}
             </p>
 
-            {/* Trending badge */}
             {pathname === "/" && (
               <div className="inline-flex flex-shrink-0 items-center rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-2.5 py-1 text-[0.65rem] font-bold whitespace-nowrap shadow-[0_0_15px_rgba(251,146,60,0.6)] md:text-[0.7rem]">
                 🔥 HOT
@@ -63,7 +60,6 @@ export default function CardFeaturedGames({
 
       <TagsWrapper isOpen={isOpen} tags={tags} />
 
-      {/* Enhanced image with overlay */}
       <div className="absolute inset-0 -z-10">
         <BaseImage
           src={background_image}
@@ -71,11 +67,9 @@ export default function CardFeaturedGames({
           extraClassImage="h-full w-full rounded-xl object-cover group-hover:scale-105 transition-transform duration-700"
           extraClassWrapper="relative h-full"
         />
-        {/* Vignette effect */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
       </div>
 
-      {/* Enhanced buttons section */}
       <div
         className={`absolute ${isOpen ? "bottom-36 md:bottom-32" : "bottom-4"} left-1/2 z-31 flex h-9 w-[160px] -translate-x-1/2 items-center transition-all duration-500 md:h-10 md:w-[180px]`}
       >
@@ -87,7 +81,6 @@ export default function CardFeaturedGames({
           onClick={() => setIsOpen(!isOpen)}
         />
 
-        {/* Enhanced Metacritic badge */}
         {isMetacriticRating && (
           <div
             className={`absolute -right-13 flex h-9 w-9 items-center justify-center rounded-lg md:-right-18 md:h-10 md:w-10 ${metacriticClassBackground} border-2 border-white/20 text-[0.85rem] font-bold shadow-[0_0_20px_rgba(0,0,0,0.5)] md:text-[0.9rem]`}

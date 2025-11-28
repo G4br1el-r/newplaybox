@@ -2,7 +2,6 @@
 
 export default function Loading() {
   return (
-    // ✅ CRITICAL: max-w-full + overflow-x-hidden
     <div className="via-blue-darkest/80 to-blue-darkest flex min-h-screen max-w-full flex-col overflow-x-hidden bg-gradient-to-b from-gray-900">
       <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
         <div className="to-blue-darkest absolute inset-0 animate-pulse bg-gradient-to-b from-gray-800 via-gray-900" />
@@ -80,7 +79,6 @@ export default function Loading() {
           </div>
         </div>
       </div>
-
       <section className="flex w-full max-w-full flex-col gap-15 overflow-x-hidden px-3 py-8 md:gap-20 md:px-8 md:py-12 lg:gap-25 lg:px-12 lg:py-16">
         <div className="flex w-full max-w-full flex-col gap-3 md:gap-4 lg:gap-5">
           <div className="group flex h-8 w-fit items-center gap-2 rounded-full bg-white/8 p-2.5 backdrop-blur-xl md:h-10 md:gap-3 md:p-3 lg:h-12 lg:p-4">
