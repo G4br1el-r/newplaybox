@@ -37,7 +37,7 @@ export default function FeaturedGamesWrapper({
           className={`from-blue-darkest/70 via-blue-darkest/95 to-blue-darkest xs:top-250 absolute left-0 z-10 w-full rounded-t-[10px] bg-gradient-to-b backdrop-blur-sm transition-all ease-in-out md:top-160 md:h-[485px] lg:top-165 xl:top-167 xl:h-[300px] ${
             isOpen
               ? "pointer-events-none translate-y-4 opacity-0 duration-100"
-              : "pointer-events-auto top-255 h-[445px] translate-y-0 opacity-100 duration-2000"
+              : "pointer-events-auto top-255 h-[455px] translate-y-0 opacity-100 duration-2000"
           }`}
         />
       </section>
