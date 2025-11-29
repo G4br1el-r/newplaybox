@@ -1,74 +1,68 @@
 import FilledButton from "../../Button/FilledButton";
 import OutlineButton from "../../Button/OutlineButton";
 import BaseImage from "../../BaseImage";
+import SpaceParticles from "@/components/Particles/SpaceParticles";
 
 export default function HeroHome() {
   return (
-    <section className="relative flex h-[100dvh] flex-col items-center justify-between overflow-hidden px-3 pt-25 pb-5 text-center xl:pt-10">
+    <section className="relative flex min-h-[100dvh] flex-col items-center justify-between overflow-hidden px-3 pt-20 pb-5 text-center md:pt-25 xl:pt-10">
+      <SpaceParticles />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-900/20 via-blue-900/10 to-transparent" />
-
-      <div className="relative z-10 flex flex-col items-center gap-4">
-        <h1 className="max-w-[1400px] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 bg-clip-text text-[1.8rem] leading-tight font-extrabold text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.4)] md:text-[2.6rem] lg:text-[3.4rem] 2xl:text-[4rem]">
+      <div className="relative z-10 flex flex-col items-center gap-3 md:gap-4">
+        <h1 className="xs:text-3xl max-w-[1400px] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 bg-clip-text text-2xl leading-tight font-extrabold text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.4)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
           Explore the gaming universe with Playbox
         </h1>
-
-        <p className="max-w-[800px] text-[0.9rem] font-medium text-white/70 md:text-[1.1rem] lg:text-[1.2rem]">
+        <p className="hidden max-w-[800px] text-sm font-medium text-white/70 sm:text-base md:text-lg lg:text-xl xl:block">
           Discover thousands of games, connect with players worldwide, and dive
           into the ultimate gaming experience
         </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <div className="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
-            <span className="text-[0.75rem] font-bold text-cyan-400 md:text-[0.85rem]">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+          <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-xl md:px-4 md:py-2">
+            <span className="text-xs font-bold text-cyan-400 md:text-sm">
               10,000+ Games
             </span>
           </div>
-          <div className="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
-            <span className="text-[0.75rem] font-bold text-purple-400 md:text-[0.85rem]">
+          <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-xl md:px-4 md:py-2">
+            <span className="text-xs font-bold text-purple-400 md:text-sm">
               500K+ Players
             </span>
           </div>
-          <div className="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
-            <span className="text-[0.75rem] font-bold text-pink-400 md:text-[0.85rem]">
+          <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-xl md:px-4 md:py-2">
+            <span className="text-xs font-bold text-pink-400 md:text-sm">
               Daily Updates
             </span>
           </div>
         </div>
       </div>
-
-      <div className="relative flex h-[250px] w-full items-center justify-center overflow-visible md:h-[350px] lg:h-[400px]">
-        <div className="bg-gradient-radial absolute inset-0 from-purple-600/30 via-transparent to-transparent blur-3xl" />
-
+      <div className="relative flex h-[200px] w-full items-center justify-center overflow-visible sm:h-[250px] md:h-[320px] lg:h-[400px]">
         <BaseImage
           src="/blackhole.webp"
           alt="Black hole"
-          extraClassImage="h-[200px] md:h-[280px] lg:h-[350px] w-full -translate-x-0 -translate-y-6 scale-110 transform object-cover drop-shadow-[0_0_50px_rgba(139,92,246,0.6)]"
-          extraClassWrapper="relative top-7 h-[600px] xl:-top-4 xl:max-w-[1400px] xl:h-[700px] lg:h-[650px] w-full overflow-visible"
+          extraClassImage="object-cover scale-110"
+          extraClassWrapper="absolute -top-34 md:-top-33 md:h-[550px] md:max-w-[924px] lg:-top-22 h-[450px] xl:max-w-[1100px] 2xl:-top-66 2xl:h-[900px] 2xl:max-w-[1000px] w-full overflow-visible"
         />
-
         <BaseImage
           src="/controll.webp"
           alt="Control"
-          extraClassImage="h-full w-full object-contain drop-shadow-[0_10px_40px_rgba(59,130,246,0.5)]"
-          extraClassWrapper="absolute top-10  xl:-top-8 2xl:w-[550px] z-10 h-[200px] w-[200px] md:top-3 md:h-[350px] md:w-[350px] lg:h-[420px] lg:w-[420px]"
+          extraClassImage="h-full w-full object-contain"
+          extraClassWrapper="relative z-10 h-[190px] w-[190px] sm:h-[250px] sm:w-[250px]  md:h-[300px] md:w-[300px] lg:h-[420px] lg:w-[420px]  2xl:w-[450px]"
         />
       </div>
-
-      <div className="relative z-10 mb-5 flex w-full flex-col items-center gap-3 text-[0.8rem] xl:max-w-[600px] xl:flex-row">
-        <div className="group h-12 w-full md:h-16">
+      <div className="relative z-10 mb-3 flex w-full flex-col items-center gap-2.5 md:mb-5 md:gap-3 xl:max-w-[600px] xl:flex-row">
+        <div className="group h-11 w-full md:h-12 lg:h-14">
           <FilledButton
             content="Get Started Now"
-            extraClass="text-[0.9rem]  md:text-[1.1rem] lg:text-[1.2rem] items-center justify-center font-bold hover:shadow-[0_0_20px_rgba(139,92,246,0.8)] transition-all duration-300"
+            extraClass="text-sm sm:text-base md:text-lg items-center justify-center font-bold hover:shadow-[0_0_20px_rgba(139,92,246,0.8)] transition-all duration-300"
             ButtonType="link"
             href="/"
           />
         </div>
-        <div className="group h-12 w-full md:h-16">
+        <div className="group h-11 w-full md:h-12 lg:h-14">
           <OutlineButton
             content="Game Library"
             ButtonType="link"
             href="/"
-            extraClass="text-[0.9rem] md:text-[1.1rem] lg:text-[1.2rem] items-center justify-center font-bold hover:bg-white/5 hover:border-purple-400 transition-all duration-300"
+            extraClass="text-sm sm:text-base md:text-lg items-center justify-center font-bold hover:bg-white/5 hover:border-purple-400 transition-all duration-300"
           />
         </div>
       </div>

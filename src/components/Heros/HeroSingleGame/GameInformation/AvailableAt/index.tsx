@@ -53,10 +53,10 @@ export default function AvailableAt({ singleGameStores }: AvailableAtProps) {
           <div className="transition-all duration-300 group-hover:rotate-12">
             {getStoreIcon(store.store.name)}
           </div>
-          <span className="group-hover:text-blue-neon-bright flex-1 text-[0.6rem] text-white transition-colors duration-300 md:text-[0.85rem] lg:text-[1rem] xl:text-[1.1rem]">
+          <span className="group-hover:text-blue-neon-bright flex-1 text-xs text-white transition-colors duration-300 md:text-sm lg:text-base xl:text-lg">
             {store.store.name}
           </span>
-          <span className="group-hover:text-blue-neon-bright text-[0.6rem] text-white/50 transition-all duration-300 group-hover:translate-x-2 md:text-[0.7rem] lg:text-[0.8rem]">
+          <span className="group-hover:text-blue-neon-bright text-xs text-white/50 transition-all duration-300 group-hover:translate-x-2 md:text-sm lg:text-base">
             →
           </span>
         </a>

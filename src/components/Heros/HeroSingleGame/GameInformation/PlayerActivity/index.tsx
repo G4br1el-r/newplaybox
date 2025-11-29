@@ -22,10 +22,10 @@ export default function PlayerActivity({
           key={`${key}-${index}`}
           className="group hover:border-blue-neon/20 flex cursor-pointer flex-col gap-1 rounded-xl border border-transparent bg-white/8 p-3 backdrop-blur-xl transition-all duration-300 hover:bg-white/12 hover:shadow-lg hover:shadow-blue-500/10 md:gap-2 md:rounded-2xl md:p-4 lg:p-5 xl:p-6"
         >
-          <p className="text-[0.65rem] text-white/60 transition-colors duration-300 group-hover:text-white/80 md:text-[0.75rem] lg:text-[0.85rem] xl:text-base">
+          <p className="text-xs text-white/60 transition-colors duration-300 group-hover:text-white/80 md:text-sm lg:text-base">
             {labels[key]}
           </p>
-          <p className="group-hover:text-blue-neon-bright text-[1.1rem] font-bold text-white transition-all duration-300 md:text-[1.3rem] lg:text-[1.5rem] xl:text-[1.7rem]">
+          <p className="group-hover:text-blue-neon-bright text-lg font-bold text-white transition-all duration-300 md:text-xl lg:text-2xl xl:text-3xl">
             {value.toLocaleString()}
           </p>
         </div>

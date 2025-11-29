@@ -19,14 +19,14 @@ export default function CommunityFeedBack({
           className="group space-y-2 transition-all duration-300 hover:scale-[1.02] md:space-y-3"
         >
           <div className="flex items-center justify-between">
-            <span className="text-[0.8rem] font-medium text-white/90 capitalize transition-all duration-300 group-hover:text-white md:text-[0.95rem] lg:text-[1.1rem] xl:text-[1.2rem]">
+            <span className="text-sm font-medium text-white/90 capitalize transition-all duration-300 group-hover:text-white md:text-base lg:text-lg xl:text-xl">
               {rating.title === "exceptional" && "🌟 "}
               {rating.title === "recommended" && "👍 "}
               {rating.title === "meh" && "😐 "}
               {rating.title === "skip" && "👎 "}
               {rating.title}
             </span>
-            <span className="text-[0.7rem] text-white/60 transition-all duration-300 group-hover:text-white/80 md:text-[0.8rem] lg:text-[0.9rem]">
+            <span className="text-xs text-white/60 transition-all duration-300 group-hover:text-white/80 md:text-sm lg:text-base">
               {rating.count.toLocaleString()} ({rating.percent.toFixed(1)}
               %)
             </span>
@@ -49,7 +49,7 @@ export default function CommunityFeedBack({
       ))}
 
       <div className="mt-2 border-t border-white/10 pt-3 transition-all duration-300 hover:border-white/20 md:mt-4 md:pt-4 lg:mt-5 lg:pt-5">
-        <span className="text-[0.7rem] text-white/50 transition-colors duration-300 hover:text-white/70 md:text-[0.8rem] lg:text-[0.9rem]">
+        <span className="text-xs text-white/50 transition-colors duration-300 hover:text-white/70 md:text-sm lg:text-base">
           Based on {votesCount.toLocaleString()} total ratings
         </span>
       </div>
