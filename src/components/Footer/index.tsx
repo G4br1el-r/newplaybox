@@ -3,7 +3,7 @@ import { Github, Instagram, Linkedin } from "lucide-react";
 export function Footer() {
   return (
     <footer className="flex w-full flex-col items-center justify-center gap-6 py-12 text-center">
-      <div className="text-purple-black-hole flex flex-wrap justify-center gap-8 font-bold">
+      <div className="text-purple-black-hole flex flex-wrap justify-center gap-8 py-3 font-bold">
         <a
           href="https://www.instagram.com/gha.rodriguess/"
           target="_blank"
@@ -27,7 +27,7 @@ export function Footer() {
         </a>
       </div>
       <div className="border-purple-black-hole w-full border-t"></div>
-      <p className="text-purple-black-hole py-2 text-[0.8rem]">
+      <p className="text-purple-black-hole text-[0.8rem]">
         © 2025 Playbox. Designed & Developed with 💜 by Gabriel Rodrigues.
       </p>
     </footer>
