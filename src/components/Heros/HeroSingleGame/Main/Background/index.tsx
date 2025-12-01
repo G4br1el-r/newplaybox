@@ -9,7 +9,7 @@ interface HeroMainProps {
 
 export default function HeroMain({ singleGameData }: HeroMainProps) {
   return (
-    <section className="relative flex h-[100svh] w-screen flex-col items-center gap-2 px-3 pt-25 pb-10 text-center xl:w-full">
+    <section className="relative flex min-h-[100svh] w-screen flex-col items-center gap-2 px-3 pt-25 pb-10 text-center lg:pt-10 xl:w-full">
       <BaseImage
         src={singleGameData.background_image}
         alt={singleGameData.name}

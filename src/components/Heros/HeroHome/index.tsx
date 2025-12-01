@@ -44,7 +44,7 @@ export default function HeroHome() {
         <BaseImage
           src="/controll.webp"
           alt="Control"
-          extraClassImage="h-full w-full object-contain"
+          extraClassImage="h-full w-full animate-float object-contain"
           extraClassWrapper="relative z-10 h-[190px] w-[190px] sm:h-[250px] sm:w-[250px]  md:h-[300px] md:w-[300px] lg:h-[420px] lg:w-[420px]  2xl:w-[450px]"
         />
       </div>

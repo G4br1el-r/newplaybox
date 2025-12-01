@@ -126,6 +126,21 @@
   animation: blink 1s step-start infinite;
 }
 
+/* CONTROLE */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
 html,
 body {
   overscroll-behavior: none;

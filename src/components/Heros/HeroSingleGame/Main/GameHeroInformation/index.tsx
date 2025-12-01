@@ -37,7 +37,7 @@ export default function GameHeroInformation({
       <h1 className="hover:text-blue-neon-bright max-w-full cursor-default text-3xl leading-tight font-extrabold break-words transition-colors duration-300 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
         {singleGameData.name}
       </h1>
-      <div className="flex h-full w-full flex-col items-center justify-between">
+      <div className="flex h-full w-full flex-col items-center justify-between lg:gap-3">
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="flex items-center justify-center gap-3">
             {singleGameData.metacritic && (
