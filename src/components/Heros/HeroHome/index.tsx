@@ -3,7 +3,11 @@ import OutlineButton from "../../Button/OutlineButton";
 import BaseImage from "../../BaseImage";
 import SpaceParticlesWrapper from "@/components/Particles/SpaceParticlesWrapper";
 
-export default function HeroHome() {
+interface HeroHomeProps {
+  priority?: boolean;
+}
+
+export default function HeroHome({ priority = true }: HeroHomeProps) {
   return (
     <section className="relative flex min-h-[100dvh] flex-col items-center justify-between overflow-hidden px-3 pt-20 pb-5 text-center md:pt-25 xl:pt-10">
       <SpaceParticlesWrapper />
@@ -40,15 +44,19 @@ export default function HeroHome() {
       <div className="relative flex h-[200px] w-full items-center justify-center overflow-visible sm:h-[250px] md:h-[320px] lg:h-[400px]">
         <BaseImage
           src="/blackhole.webp"
-          alt="Black hole"
-          priority={true}
+          alt="Black hole background effect"
+          priority={priority}
+          quality={85}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 924px, 1100px"
           extraClassImage="object-cover scale-110"
           extraClassWrapper="absolute -top-34 md:-top-33 md:h-[550px] md:max-w-[924px] lg:-top-22 h-[450px] xl:max-w-[1100px] 2xl:-top-66 2xl:h-[900px] 2xl:max-w-[1000px] w-full overflow-visible"
         />
         <BaseImage
           src="/controll.webp"
-          alt="Control"
-          priority={true}
+          alt="Gaming controller"
+          priority={priority}
+          quality={90}
+          sizes="(max-width: 640px) 190px, (max-width: 768px) 250px, (max-width: 1024px) 300px, 420px"
           extraClassImage="h-full w-full animate-float object-contain"
           extraClassWrapper="relative z-10 h-[190px] w-[190px] sm:h-[250px] sm:w-[250px] md:h-[300px] md:w-[300px] lg:h-[420px] lg:w-[420px] 2xl:w-[450px]"
         />
@@ -67,7 +75,7 @@ export default function HeroHome() {
           <OutlineButton
             content="Game Library"
             ButtonType="link"
-            href="/"
+            href="/explore"
             extraClass="text-sm sm:text-base md:text-lg items-center justify-center font-bold hover:bg-white/5 hover:border-purple-400 transition-all duration-300"
           />
         </div>

@@ -16,7 +16,7 @@ interface CardFeaturedGamesProps {
   background_image: string;
   metacritic: number;
   tags: Tag[];
-  priority?: boolean; // ✅ ADICIONADO
+  priority?: boolean;
   fullWidth?: boolean;
 }
 
@@ -26,13 +26,12 @@ export default function CardFeaturedGames({
   background_image,
   metacritic,
   tags,
-  priority = false, // ✅ ADICIONADO
+  priority = false,
   fullWidth,
 }: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
   const metacriticClassBackground = MetacriticScoreColor(metacritic);
   const isMetacriticRating = metacritic > 0;
-
   const pathname = usePathname();
 
   return (
@@ -68,6 +67,12 @@ export default function CardFeaturedGames({
           src={background_image}
           alt={name}
           priority={priority}
+          quality={priority ? 85 : 75} // ✅ Primeira imagem mais qualidade
+          sizes={
+            fullWidth
+              ? "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 640px"
+              : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 420px"
+          } // ✅ Sizes específicos
           extraClassImage="h-full w-full rounded-xl object-cover group-hover:scale-105 transition-transform duration-700"
           extraClassWrapper="relative h-full"
         />

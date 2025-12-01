@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
-import { Orbitron } from "next/font/google";
+import { Orbitron, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Main";
 import Navbar from "@/components/Header/Navbar";
 
-// ✅ Otimização da fonte Google
+const pressStart = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-press-start",
+});
+
 const orbitron = Orbitron({
   subsets: ["latin"],
-  display: "swap", // ✅ Melhora performance de carregamento
-  preload: true, // ✅ Preload da fonte
-  variable: "--font-orbitron", // ✅ Opcional: usar CSS variable
+  display: "swap",
+  variable: "--font-orbitron",
 });
 
 export const metadata: Metadata = {
@@ -25,11 +30,8 @@ export const metadata: Metadata = {
     "xbox",
     "pc games",
   ],
-
   applicationName: "Playbox",
-
   robots: "index, follow",
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -46,14 +48,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Playbox | The Next Level of Entertainment",
     description: "Challenging games. Memorable experiences.",
     images: [""],
   },
-
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -66,16 +66,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en" className={`${orbitron.variable} ${pressStart.variable}`}>
       <head>
         {/* Preconnect para RAWG API */}
         <link rel="preconnect" href="https://api.rawg.io" />
         <link rel="dns-prefetch" href="https://api.rawg.io" />
         <link rel="preconnect" href="https://media.rawg.io" />
         <link rel="dns-prefetch" href="https://media.rawg.io" />
+
+        <link
+          rel="preload"
+          as="image"
+          href="/controll.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/blackhole.webp"
+          type="image/webp"
+        />
       </head>
       <body
-        suppressHydrationWarning
         className={`${orbitron.className} bg-blue-darkest overflow-x-hidden bg-center bg-no-repeat tracking-widest text-white`}
       >
         <section className="grid w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto]">

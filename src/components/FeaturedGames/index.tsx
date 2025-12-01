@@ -29,7 +29,7 @@ export default function FeaturedGames({
           <CardFeaturedGames
             key={game.id}
             {...game}
-            priority={index < 3} // ✅ ADICIONADO: Prioriza primeiros 3 cards
+            priority={index === 0}
             fullWidth={index === FeaturedGamesData.length - 1}
           />
         ))}
