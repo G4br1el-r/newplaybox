@@ -16,6 +16,7 @@ interface CardFeaturedGamesProps {
   background_image: string;
   metacritic: number;
   tags: Tag[];
+  priority?: boolean; // ✅ ADICIONADO
   fullWidth?: boolean;
 }
 
@@ -25,6 +26,7 @@ export default function CardFeaturedGames({
   background_image,
   metacritic,
   tags,
+  priority = false, // ✅ ADICIONADO
   fullWidth,
 }: CardFeaturedGamesProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,12 +34,13 @@ export default function CardFeaturedGames({
   const isMetacriticRating = metacritic > 0;
 
   const pathname = usePathname();
+
   return (
     <div
       className={`group ${fullWidth && "md:col-span-2"} relative h-[420px] w-full overflow-hidden rounded-xl border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-blue-900/20 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 md:h-[450px]`}
     >
       <Link
-        prefetch
+        prefetch={priority}
         href={`/game/${slug}`}
         className="absolute top-0 left-0 z-10 h-full w-full rounded-xl transition-all duration-500"
       >
@@ -63,7 +66,8 @@ export default function CardFeaturedGames({
       <div className="absolute inset-0 -z-10">
         <BaseImage
           src={background_image}
-          alt="Game"
+          alt={name}
+          priority={priority}
           extraClassImage="h-full w-full rounded-xl object-cover group-hover:scale-105 transition-transform duration-700"
           extraClassWrapper="relative h-full"
         />

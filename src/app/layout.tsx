@@ -4,7 +4,13 @@ import "./globals.css";
 import Header from "@/components/Header/Main";
 import Navbar from "@/components/Header/Navbar";
 
-const orbitron = Orbitron({ subsets: ["latin"] });
+// ✅ Otimização da fonte Google
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap", // ✅ Melhora performance de carregamento
+  preload: true, // ✅ Preload da fonte
+  variable: "--font-orbitron", // ✅ Opcional: usar CSS variable
+});
 
 export const metadata: Metadata = {
   title: "Playbox | The Next Level of Entertainment",
@@ -61,6 +67,13 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
+      <head>
+        {/* Preconnect para RAWG API */}
+        <link rel="preconnect" href="https://api.rawg.io" />
+        <link rel="dns-prefetch" href="https://api.rawg.io" />
+        <link rel="preconnect" href="https://media.rawg.io" />
+        <link rel="dns-prefetch" href="https://media.rawg.io" />
+      </head>
       <body
         suppressHydrationWarning
         className={`${orbitron.className} bg-blue-darkest overflow-x-hidden bg-center bg-no-repeat tracking-widest text-white`}

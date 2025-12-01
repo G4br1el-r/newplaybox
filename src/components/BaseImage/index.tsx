@@ -1,8 +1,10 @@
+// components/BaseImage.tsx - MANTÉM IGUAL, só remove unoptimized
 import Image from "next/image";
 
 interface BaseImageProps {
   src: string;
   alt: string;
+  priority?: boolean;
   extraClassImage?: string;
   extraClassWrapper?: string;
 }
@@ -10,6 +12,7 @@ interface BaseImageProps {
 export default function BaseImage({
   src,
   alt,
+  priority = false,
   extraClassImage,
   extraClassWrapper,
 }: BaseImageProps) {
@@ -20,9 +23,9 @@ export default function BaseImage({
         alt={alt}
         quality={75}
         fill
-        unoptimized
+        priority={priority}
         sizes="(max-width: 768px) 100vw, 800px"
-        className={` ${extraClassImage}`}
+        className={`${extraClassImage}`}
       />
     </div>
   );

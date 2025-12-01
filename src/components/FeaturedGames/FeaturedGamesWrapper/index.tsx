@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { AudioPlayer, AudioPlayerRef } from "../AudioPlayer";
+import dynamic from "next/dynamic"; // ✅ ADICIONADO
+
+const AudioPlayer = dynamic(
+  () => import("../AudioPlayer").then((mod) => ({ default: mod.AudioPlayer })),
+  { ssr: false },
+);
+
+import type { AudioPlayerRef } from "../AudioPlayer";
 
 interface FeaturedGamesWrapperProps {
   children: React.ReactNode;
@@ -50,10 +57,11 @@ export default function FeaturedGamesWrapper({
               : "-top-86 md:-top-90 xl:-top-65"
           }`}
           onClick={handleClick}
+          aria-label={isOpen ? "Show less games" : "Show more games"}
         >
           <img
             src="/coin.gif"
-            alt="Game"
+            alt="Coin animation"
             className={`pointer-events-none absolute -top-10 h-20 w-20 rounded-full object-cover drop-shadow-[0_0_20px_rgba(234,179,8,0.8)] transition-opacity duration-300 ${
               isOpen ? "coin-animate opacity-100" : "opacity-0"
             }`}
