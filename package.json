@@ -1,6 +1,13 @@
 {
   "name": "newplaybox",
   "version": "0.1.0",
+  "browserslist": [
+    "last 2 versions",
+    "> 0.5%",
+    "not dead",
+    "not IE 11",
+    "not op_mini all"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
