@@ -13,8 +13,8 @@ interface PlatformCardProps {
 }
 
 export default function PlatformCard({
-  TailwindHeight = "h-12",
-  TailwindWidth = "w-12",
+  TailwindHeight,
+  TailwindWidth,
   platform,
 }: PlatformCardProps) {
   const findPlatformIcon = platformsIconList.find(

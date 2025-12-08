@@ -5,6 +5,7 @@ import {
   FaLinux,
   FaPlaystation,
   FaXbox,
+  FaMobileButton,
 } from "react-icons/fa6";
 import { IoLogoAndroid } from "react-icons/io";
 import { SiAtari, SiSega } from "react-icons/si";
@@ -19,4 +20,6 @@ export const platformsIconList = [
   { id: 7, name: "Nintendo", reactIcon: BsNintendoSwitch },
   { id: 9, name: "Atari", reactIcon: SiAtari },
   { id: 11, name: "SEGA", reactIcon: SiSega },
+  { id: 98, name: "Mobile", reactIcon: FaMobileButton },
+  { id: 99, name: "Desktop", reactIcon: FaComputer },
 ];

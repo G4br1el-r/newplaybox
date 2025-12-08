@@ -5,20 +5,14 @@ import { getSingleGame } from "@/services/api";
 import { buildGameMetadata } from "@/utils/MetaData";
 import { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+//prettier-ignore
+export async function generateMetadata({ params}: { params: Promise<{ slug: string }>}): Promise<Metadata> {
   const { slug } = await params;
   return await buildGameMetadata(slug);
 }
 
-export default async function SingleGame({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+//prettier-ignore
+export default async function SingleGame({ params }: { params: Promise<{ slug: string }>}) {
   const { slug } = await params;
 
   const singleGameData = await getSingleGame(slug);

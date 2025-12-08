@@ -1,8 +1,10 @@
 import { CommumitySayingType } from "@/@types/CommunitySayingType";
 import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
 import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
+import { PlatformParentsList } from "@/@types/SearchTypes";
 import { SingleGameScreenshotsType } from "@/@types/SingleGameScreenshotsType";
 import { SingleGameType } from "@/@types/SingleGameTypes";
+import { platformsIconList } from "@/utils/PlatformsIcon";
 import axios, { AxiosError, AxiosInstance } from "axios";
 
 const api: AxiosInstance = axios.create({
@@ -150,5 +152,53 @@ export async function getlistGameForSameSeries(
     return response.data;
   } catch (error) {
     handleApiError(error, `/games/${slug}/game-series`);
+  }
+}
+
+export async function getPlatformsListParentsForFilters(): Promise<
+  PlatformParentsList[]
+> {
+  try {
+    const response = await api.get<{ results: PlatformParentsList[] }>(
+      "/platforms/lists/parents",
+    );
+
+    const allowedIds = platformsIconList.map((platform) => platform.id);
+    const responseData = response.data.results.filter((platform) =>
+      allowedIds.includes(platform.id),
+    );
+
+    const iosData = responseData.find((p) => p.id === 4);
+    const androidData = responseData.find((p) => p.id === 8);
+    const pcData = responseData.find((p) => p.id === 1);
+    const linuxData = responseData.find((p) => p.id === 6);
+
+    const withoutMobileAndDesktop = responseData.filter(
+      (p) => p.id !== 4 && p.id !== 8 && p.id !== 1 && p.id !== 6,
+    );
+
+    const desktopGroup: PlatformParentsList = {
+      id: 99,
+      name: "Desktop",
+      slug: "desktop",
+      platforms: [
+        ...(pcData?.platforms || []),
+        ...(linuxData?.platforms || []),
+      ],
+    };
+
+    const mobileGroup: PlatformParentsList = {
+      id: 98,
+      name: "Mobile",
+      slug: "mobile",
+      platforms: [
+        ...(iosData?.platforms || []),
+        ...(androidData?.platforms || []),
+      ],
+    };
+
+    return [...withoutMobileAndDesktop, desktopGroup, mobileGroup];
+  } catch (error) {
+    handleApiError(error, "/platforms/lists/parents");
   }
 }

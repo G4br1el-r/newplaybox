@@ -22,9 +22,7 @@ export default async function Home() {
   return (
     <>
       <HeroHome priority={true} />
-
       <FeaturedGames FeaturedGamesData={orderedDescFeaturedGamesData} />
-
       <CommunitySaying CommunitySayingData={communitySayingData} />
       <CodeReveal />
       <Footer />
