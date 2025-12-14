@@ -1,69 +1,18 @@
 "use client";
 import { PlatformParentsList } from "@/@types/SearchTypes";
 import PlatformCard from "@/components/PlatformCard";
+import { useActiveFilter } from "@/store/useActiveFilter";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown, Check } from "lucide-react";
-import { useState } from "react";
 
 interface PlatformFilterProps {
   platformsList: PlatformParentsList[];
 }
 
-interface PlatformsSelected {
-  idPlatformMain: number;
-  idsPlatformsChildren: number[];
-}
-
 //prettier-ignore
 export default function PlatformFilter({ platformsList }: PlatformFilterProps) {
-  const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformsSelected[]>([]);
-
-  const handleTogglePlatform = (mainId: number, childId: number): void => {
-    setSelectedPlatforms((platforms) => {
-      const mainGroup = platforms.find((p) => p.idPlatformMain === mainId);
-
-      if (!mainGroup) {
-        return createNewGroup(platforms, mainId, childId);
-      }
-
-      return updateGroup(platforms, mainGroup, mainId, childId);
-    });
-  };
-
-//prettier-ignore
-  function createNewGroup(platforms: PlatformsSelected[], mainId: number, childId: number): PlatformsSelected[] {
-    return [
-      ...platforms,
-      {
-        idPlatformMain: mainId,
-        idsPlatformsChildren: [childId],
-      },
-    ];
-  }
-
-  //prettier-ignore
-  function updateGroup(platforms: PlatformsSelected[], mainGroup: PlatformsSelected, mainId: number, childId: number): PlatformsSelected[] {
-    const newChildren = toggleChild(mainGroup.idsPlatformsChildren, childId);
-
-    if (newChildren.length === 0) {
-      return platforms.filter((p) => p.idPlatformMain !== mainId);
-    }
-
-    return platforms.map((p) =>
-      p.idPlatformMain === mainId
-        ? { ...p, idsPlatformsChildren: newChildren }
-        : p,
-    );
-  }
-
-  function toggleChild(children: number[], childId: number): number[] {
-    const hasChild = children.includes(childId);
-    return hasChild
-      ? children.filter((id) => id !== childId)
-      : [...children, childId];
-  }
-
-
+  const selectedPlatforms = useActiveFilter((state) => state.platformsSelected)
+  const handleTogglePlatform = useActiveFilter((state) => state.handleTogglePlatform)    
   const countSelectedInGroup = (mainId: number): number => {
     const group = selectedPlatforms.find((p) => p.idPlatformMain === mainId);
     return group?.idsPlatformsChildren.length || 0;
@@ -96,7 +45,8 @@ export default function PlatformFilter({ platformsList }: PlatformFilterProps) {
             <Accordion.Item
               key={platformMain.id}
               value={platformMain.name}
-              className={`cursor-pointer overflow-hidden rounded-xl border backdrop-blur-3xl transition-all duration-300   ${groupSelected ? "border-cyan-400" : "border-slate-700 hover:border-slate-600"} `}
+              className={`cursor-pointer overflow-hidden rounded-xl border backdrop-blur-3xl transition-all duration-300 ${groupSelected ? "border-cyan-400" : "border-slate-700 hover:border-slate-600"} `}
+              
             >
               <Accordion.Header>
                 <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between p-4 text-left">
@@ -135,7 +85,7 @@ export default function PlatformFilter({ platformsList }: PlatformFilterProps) {
                   return (
                     <button
                       key={platformList.id}
-                      className="w-full border-t cursor-pointer border-slate-700/50 p-2 text-start transition-all duration-200 hover:bg-slate-700/30"
+                      className="w-full cursor-pointer border-t border-slate-700/50 p-2 text-start transition-all duration-200 hover:bg-slate-700/30"
                       onClick={() =>
                         handleTogglePlatform(platformMain.id, platformList.id)
                       }

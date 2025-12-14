@@ -1,5 +1,6 @@
 import { CommumitySayingType } from "@/@types/CommunitySayingType";
 import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
+import { GenrerArrayType, GenresType } from "@/@types/GenresType";
 import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
 import { PlatformParentsList } from "@/@types/SearchTypes";
 import { SingleGameScreenshotsType } from "@/@types/SingleGameScreenshotsType";
@@ -200,5 +201,21 @@ export async function getPlatformsListParentsForFilters(): Promise<
     return [...withoutMobileAndDesktop, desktopGroup, mobileGroup];
   } catch (error) {
     handleApiError(error, "/platforms/lists/parents");
+  }
+}
+
+export async function getlistGenresForFilters(): Promise<GenrerArrayType[]> {
+  try {
+    const response = await api.get<GenresType>(`/genres`);
+    const onlyGenrer = response.data.results
+      .map((genrer) => ({
+        idGenrer: genrer.id,
+        nameGenrer: genrer.name,
+      }))
+      .filter((genrer) => genrer.idGenrer !== 59);
+
+    return onlyGenrer;
+  } catch (error) {
+    handleApiError(error, `/genres`);
   }
 }
