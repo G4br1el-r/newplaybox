@@ -1,4 +1,4 @@
-import SearchInput from "@/components/Search/SearchInputs/index";
+import ExploreFilterGames from "@/components/ExploreFilterGames";
 
 export default async function Explore() {
   return (
@@ -25,7 +25,7 @@ export default async function Explore() {
         of incredible titles
       </h2>
 
-      <SearchInput />
+      <ExploreFilterGames />
     </section>
   );
 }

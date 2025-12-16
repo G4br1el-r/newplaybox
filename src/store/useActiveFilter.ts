@@ -1,21 +1,26 @@
+// src/stores/useActiveFilter.ts
 import { create } from "zustand";
 
 interface ActiveFilterState {
   platformsSelected: PlatformsSelected[];
   genresSelected: GenrerSelect[];
   ratingSelected: number;
+  searchInputValue: string;
 
   handleTogglePlatform: (mainId: number, childId: number) => void;
   handleToggleGenres: (idGenrer: number, nameGenrer: string) => void;
   handleRatingSelected: (rating: number) => void;
+  handleSearchInput: (value: string) => void;
 
   clearPlatforms: () => void;
+  clearSearchInput: () => void;
 }
 
 export interface GenrerSelect {
   idGenrer: number;
   nameGenrer: string;
 }
+
 export interface PlatformsSelected {
   idPlatformMain: number;
   idsPlatformsChildren: number[];
@@ -25,6 +30,7 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
   platformsSelected: [],
   genresSelected: [],
   ratingSelected: 0,
+  searchInputValue: "",
 
   handleTogglePlatform: (mainId, childId) => {
     set((state) => {
@@ -83,8 +89,39 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
     });
   },
 
-  handleRatingSelected: (rating) => set({ ratingSelected: rating }),
+  handleRatingSelected: (rating) => {
+    if (rating < 0 || rating > 5) {
+      console.warn("Rating deve estar entre 0 e 5");
+      set({ ratingSelected: Math.max(0, Math.min(5, rating)) });
+      return;
+    }
+    set({ ratingSelected: rating });
+  },
+
+  handleSearchInput: (value) => {
+    if (typeof value !== "string") {
+      console.warn("Valor de busca deve ser uma string");
+      set({ searchInputValue: "" });
+      return;
+    }
+
+    const maxLength = 25;
+    if (value.length > maxLength) {
+      const truncatedValue = value.slice(0, maxLength);
+      set({ searchInputValue: truncatedValue });
+      return;
+    }
+
+    if (value.length > 0 && value.trim().length === 0) {
+      set({ searchInputValue: "" });
+      return;
+    }
+
+    set({ searchInputValue: value });
+  },
 
   clearPlatforms: () =>
     set({ platformsSelected: [], genresSelected: [], ratingSelected: 0 }),
+
+  clearSearchInput: () => set({ searchInputValue: "" }),
 }));
