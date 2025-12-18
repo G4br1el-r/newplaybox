@@ -1,5 +1,9 @@
 import { CommumitySayingType } from "@/@types/CommunitySayingType";
 import { FeaturedGamesType } from "@/@types/FeaturedGamesType";
+import {
+  FilteredGamesDataType,
+  FilteredGamesParams,
+} from "@/@types/FilteredGamesType";
 import { GenrerArrayType, GenresType } from "@/@types/GenresType";
 import { ListNameForSameSeries } from "@/@types/ListNameForSameSeries";
 import { PlatformParentsList } from "@/@types/SearchTypes";
@@ -217,5 +221,17 @@ export async function getlistGenresForFilters(): Promise<GenrerArrayType[]> {
     return onlyGenrer;
   } catch (error) {
     handleApiError(error, `/genres`);
+  }
+}
+
+//prettier-ignore
+export async function getListFilteredGames(filtersGames: FilteredGamesParams): Promise<FilteredGamesDataType> {
+  try {
+    const response = await api.get<FilteredGamesDataType>(`/games`, {
+      params: filtersGames,
+    });
+    return response.data;
+  } catch (error) {
+    handleApiError(error, `/games`);
   }
 }

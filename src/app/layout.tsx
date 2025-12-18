@@ -3,6 +3,7 @@ import { Orbitron, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Main";
 import Navbar from "@/components/Header/Navbar";
+import CoreProvider from "@/components/CoreProvider";
 
 const pressStart = Press_Start_2P({
   weight: "400",
@@ -91,19 +92,21 @@ export default function RootLayout({
       <body
         className={`${orbitron.className} bg-blue-darkest overflow-x-hidden bg-center bg-no-repeat tracking-widest text-white`}
       >
-        <section className="grid w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto]">
-          <aside className="col-start-1 col-end-2 row-start-1 row-end-4 hidden xl:block">
-            <Navbar />
-          </aside>
+        <CoreProvider>
+          <section className="grid w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr_auto]">
+            <aside className="col-start-1 col-end-2 row-start-1 row-end-4 hidden xl:block">
+              <Navbar />
+            </aside>
 
-          <header className="col-start-2 col-end-3 row-start-1 row-end-2 xl:hidden">
-            <Header />
-          </header>
+            <header className="col-start-2 col-end-3 row-start-1 row-end-2 xl:hidden">
+              <Header />
+            </header>
 
-          <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-18 overflow-x-hidden">
-            {children}
-          </main>
-        </section>
+            <main className="col-start-2 col-end-3 row-start-2 row-end-3 flex flex-col gap-18 overflow-x-hidden">
+              {children}
+            </main>
+          </section>
+        </CoreProvider>
       </body>
     </html>
   );

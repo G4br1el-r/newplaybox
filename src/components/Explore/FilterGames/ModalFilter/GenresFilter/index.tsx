@@ -41,7 +41,6 @@ export default function GernesFilter({ genrerList }: GenrerFilterProps) {
     return Boolean(hasGenrer);
   };
 
-  console.log(genrerSelected);
   return (
     <div>
       <div className="mb-4 flex items-center gap-2">

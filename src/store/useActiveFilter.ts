@@ -89,22 +89,9 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
     });
   },
 
-  handleRatingSelected: (rating) => {
-    if (rating < 0 || rating > 5) {
-      console.warn("Rating deve estar entre 0 e 5");
-      set({ ratingSelected: Math.max(0, Math.min(5, rating)) });
-      return;
-    }
-    set({ ratingSelected: rating });
-  },
+  handleRatingSelected: (rating) => set({ ratingSelected: rating }),
 
   handleSearchInput: (value) => {
-    if (typeof value !== "string") {
-      console.warn("Valor de busca deve ser uma string");
-      set({ searchInputValue: "" });
-      return;
-    }
-
     const maxLength = 25;
     if (value.length > maxLength) {
       const truncatedValue = value.slice(0, maxLength);

@@ -9,6 +9,7 @@ import GernesFilter from "./GenresFilter";
 import RatingFilter from "./RatingFilter";
 import { GenrerArrayType } from "@/@types/GenresType";
 import { useActiveFilter } from "@/store/useActiveFilter";
+import { useBuildQueryParams } from "@/hooks/Explore/useBuildQueryParams";
 
 interface DialogFilterProps {
   platformsList: PlatformParentsList[];
@@ -21,6 +22,12 @@ export default function DialogFilter({
 }: DialogFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const clearPlatforms = useActiveFilter((state) => state.clearPlatforms);
+  const { handleParamsUrl } = useBuildQueryParams();
+
+  const handleShowResults = () => {
+    handleParamsUrl();
+    setIsOpen(false);
+  };
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -66,13 +73,16 @@ export default function DialogFilter({
 
             <div className="flex flex-col items-center justify-between gap-3 border-t border-slate-700 bg-gradient-to-b from-slate-900 to-slate-800 px-4 py-3">
               <button
-                className="group flex h-1/2 w-full items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-1 py-2 text-sm font-semibold text-red-400 transition-all hover:border-red-500/50 hover:bg-red-500/20 hover:text-red-300 focus:ring-2 focus:ring-red-500/50 focus:outline-none"
+                className="group flex h-1/2 w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-1 py-2 text-sm font-semibold text-red-400 transition-all hover:border-red-500/50 hover:bg-red-500/20 hover:text-red-300 focus:ring-2 focus:ring-red-500/50 focus:outline-none"
                 onClick={() => clearPlatforms()}
               >
                 <span>Clear All</span>
               </button>
 
-              <button className="flex h-1/2 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-bold text-white transition-all hover:from-blue-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
+              <button
+                onClick={handleShowResults}
+                className="flex h-1/2 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-bold text-white transition-all hover:from-blue-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
+              >
                 <span>Show Results</span>
               </button>
             </div>

@@ -1,4 +1,5 @@
-import ExploreFilterGames from "@/components/ExploreFilterGames";
+import ExploreFilterGames from "@/components/Explore/FilterGames";
+import GamesList from "@/components/Explore/GameList";
 
 export default async function Explore() {
   return (
@@ -26,6 +27,7 @@ export default async function Explore() {
       </h2>
 
       <ExploreFilterGames />
+      <GamesList />
     </section>
   );
 }
