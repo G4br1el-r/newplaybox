@@ -230,7 +230,9 @@ export async function getListFilteredGames(filtersGames: FilteredGamesParams): P
     const response = await api.get<FilteredGamesDataType>(`/games`, {
       params: filtersGames,
     });
-    return response.data;
+
+    const responseOrdenedMetacritic = {...response.data, results: response.data.results.sort((a,b) => b.metacritic - a.metacritic)}
+    return responseOrdenedMetacritic;
   } catch (error) {
     handleApiError(error, `/games`);
   }

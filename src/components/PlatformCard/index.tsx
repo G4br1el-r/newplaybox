@@ -9,13 +9,17 @@ interface PlatformType {
 interface PlatformCardProps {
   TailwindHeight: string;
   TailwindWidth: string;
+  colorIconTailwind: string;
   platform: PlatformType;
+  hasBackground?: boolean;
 }
 
 export default function PlatformCard({
   TailwindHeight,
   TailwindWidth,
+  colorIconTailwind,
   platform,
+  hasBackground = true,
 }: PlatformCardProps) {
   const findPlatformIcon = platformsIconList.find(
     (p) => p.id === platform.id,
@@ -27,9 +31,11 @@ export default function PlatformCard({
 
   return (
     <div
-      className={`${TailwindHeight} ${TailwindWidth} flex items-center justify-center rounded-lg bg-white/8 p-2.5 backdrop-blur-xl`}
+      className={`${TailwindHeight} ${TailwindWidth} ${hasBackground ? "bg-white/8 p-1.5 backdrop-blur-xl" : ""} flex items-center justify-center rounded-lg`}
     >
-      <PlatformIcon className="h-full w-full text-white" />
+      <PlatformIcon
+        className={`${colorIconTailwind ? colorIconTailwind : "text-white"} h-full w-full`}
+      />
     </div>
   );
 }

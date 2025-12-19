@@ -4,12 +4,12 @@ import { create } from "zustand";
 interface ActiveFilterState {
   platformsSelected: PlatformsSelected[];
   genresSelected: GenrerSelect[];
-  ratingSelected: number;
+  metacriticSelected: number;
   searchInputValue: string;
 
   handleTogglePlatform: (mainId: number, childId: number) => void;
   handleToggleGenres: (idGenrer: number, nameGenrer: string) => void;
-  handleRatingSelected: (rating: number) => void;
+  handleMetacriticSelected: (rating: number) => void;
   handleSearchInput: (value: string) => void;
 
   clearPlatforms: () => void;
@@ -29,7 +29,7 @@ export interface PlatformsSelected {
 export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
   platformsSelected: [],
   genresSelected: [],
-  ratingSelected: 0,
+  metacriticSelected: 0,
   searchInputValue: "",
 
   handleTogglePlatform: (mainId, childId) => {
@@ -89,7 +89,8 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
     });
   },
 
-  handleRatingSelected: (rating) => set({ ratingSelected: rating }),
+  handleMetacriticSelected: (metacriticValue) =>
+    set({ metacriticSelected: metacriticValue }),
 
   handleSearchInput: (value) => {
     const maxLength = 25;
@@ -108,7 +109,7 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
   },
 
   clearPlatforms: () =>
-    set({ platformsSelected: [], genresSelected: [], ratingSelected: 0 }),
+    set({ platformsSelected: [], genresSelected: [], metacriticSelected: 0 }),
 
   clearSearchInput: () => set({ searchInputValue: "" }),
 }));

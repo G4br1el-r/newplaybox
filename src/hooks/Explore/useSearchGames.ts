@@ -10,7 +10,7 @@ export const useSearchGames = () => {
     search: searchParams.get("search") || undefined,
     platforms: searchParams.get("platforms") || undefined,
     genres: searchParams.get("genres") || undefined,
-    rating: searchParams.get("rating") || undefined,
+    metacritic: searchParams.get("metacritic") || undefined,
   };
 
   return useQuery({
@@ -23,7 +23,7 @@ export const useSearchGames = () => {
       filters.search ||
       filters.platforms ||
       filters.genres ||
-      filters.rating
+      filters.metacritic
     ),
   });
 };

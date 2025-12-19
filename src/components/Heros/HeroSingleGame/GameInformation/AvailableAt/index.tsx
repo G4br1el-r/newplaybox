@@ -14,7 +14,7 @@ interface AvailableAtProps {
   singleGameStores: Store[];
 }
 
-const getStoreIcon = (storeName: string) => {
+export const getStoreIcon = (storeName: string) => {
   const name = storeName.toLowerCase();
   const className = "text-blue-neon-bright h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6";
 
