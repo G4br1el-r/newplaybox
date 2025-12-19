@@ -9,7 +9,7 @@ interface PlatformType {
 interface PlatformCardProps {
   TailwindHeight: string;
   TailwindWidth: string;
-  colorIconTailwind: string;
+  colorIconTailwind?: string;
   platform: PlatformType;
   hasBackground?: boolean;
 }
