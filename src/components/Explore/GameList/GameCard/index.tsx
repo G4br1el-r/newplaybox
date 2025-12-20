@@ -95,7 +95,7 @@ export default function GameCard({ game }: GameCardProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 border-b border-purple-500/20 pb-4">
-            {game.platforms.slice(0, 6).map((item) => (
+            {game.platforms?.slice(0, 6).map((item) => (
               <PlatformCard
                 key={item.platform.id}
                 TailwindHeight="h-4"
@@ -105,9 +105,9 @@ export default function GameCard({ game }: GameCardProps) {
                 platform={item.platform}
               />
             ))}
-            {game.platforms.length > 6 && (
+            {game.platforms?.length > 6 && (
               <span className="text-xs text-slate-500">
-                +{game.platforms.length - 6}
+                +{game.platforms?.length - 6}
               </span>
             )}
           </div>

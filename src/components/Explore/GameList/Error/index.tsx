@@ -14,11 +14,7 @@ export default function ErrorState({ error }: ErrorStateProps) {
           </div>
           <h3 className="text-2xl font-bold text-red-500">Loading Error</h3>
         </div>
-        <p className="mb-4 text-red-400">
-          {error instanceof Error
-            ? error.message
-            : "Unknown error while fetching games"}
-        </p>
+        <p className="mb-4 text-red-400">Unknown error while fetching games</p>
         <button
           onClick={() => window.location.reload()}
           className="w-full rounded-lg bg-red-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-red-600"

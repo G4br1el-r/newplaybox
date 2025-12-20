@@ -2,30 +2,18 @@
 "use client";
 
 import { useSearchGames } from "@/hooks/Explore/useSearchGames";
-import Image from "next/image";
-import Link from "next/link";
-import { memo, useMemo } from "react";
 import LoadingState from "./Loading";
 import ErrorState from "./Error";
 import EmptyState from "./Empty";
 import GameCard from "./GameCard";
+import { SingleGameType } from "@/@types/SingleGameTypes";
 
-interface GameCardProps {
-  game: {
-    id: number;
-    name: string;
-    background_image: string | null;
-    metacritic: number | null;
-    genres: Array<{ id: number; name: string }>;
-    platforms: Array<{ platform: { name: string } }>;
-    released: string | null;
-    rating: number;
-    slug: string;
-  };
+interface inicialDataGamesProps {
+  inicialData: { next: string; results: SingleGameType[] };
 }
 
-export default function GamesList() {
-  const { data, isLoading, isError, error } = useSearchGames();
+export default function GamesList({ inicialData }: inicialDataGamesProps) {
+  const { data, isLoading, isError, error } = useSearchGames(inicialData);
 
   if (isLoading) return <LoadingState />;
   if (isError) return <ErrorState error={error} />;
@@ -33,7 +21,6 @@ export default function GamesList() {
 
   return (
     <div className="space-y-6">
-      {/* Grid de jogos */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.results.map((game) => (
           <GameCard key={game.id} game={game} />

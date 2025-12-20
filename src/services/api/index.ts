@@ -225,15 +225,28 @@ export async function getlistGenresForFilters(): Promise<GenrerArrayType[]> {
 }
 
 //prettier-ignore
-export async function getListFilteredGames(filtersGames: FilteredGamesParams): Promise<FilteredGamesDataType> {
+export async function getListFilteredGames(
+  filtersGames?: FilteredGamesParams
+): Promise<FilteredGamesDataType> {
   try {
+    const params = filtersGames 
+      ? Object.fromEntries(
+          Object.entries(filtersGames).filter(([_, v]) => v != null)
+        )
+      : {};
+          
     const response = await api.get<FilteredGamesDataType>(`/games`, {
-      params: filtersGames,
+      params,
     });
 
-    const responseOrdenedMetacritic = {...response.data, results: response.data.results.sort((a,b) => b.metacritic - a.metacritic)}
+    const responseOrdenedMetacritic = {
+      ...response.data,
+      results: response.data.results.sort((a, b) => b.metacritic - a.metacritic)
+    };
+    
     return responseOrdenedMetacritic;
-  } catch (error) {
+  } catch (error) {  
     handleApiError(error, `/games`);
+
   }
 }

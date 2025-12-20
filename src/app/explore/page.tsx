@@ -1,7 +1,10 @@
 import ExploreFilterGames from "@/components/Explore/FilterGames";
 import GamesList from "@/components/Explore/GameList";
+import { getListFilteredGames } from "@/services/api";
 
 export default async function Explore() {
+  const inicialDataGames = await getListFilteredGames();
+
   return (
     <section className="mt-25 flex flex-col gap-5 px-3 text-2xl font-bold">
       <h1 className="text-3xl leading-none font-black">
@@ -27,7 +30,7 @@ export default async function Explore() {
       </h2>
 
       <ExploreFilterGames />
-      <GamesList />
+      <GamesList inicialData={inicialDataGames} />
     </section>
   );
 }
