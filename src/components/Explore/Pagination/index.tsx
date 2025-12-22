@@ -36,11 +36,9 @@ export default function Pagination({
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
 
-    // Ajusta quantidade de páginas visíveis por breakpoint
     const maxVisible = 7;
     const maxVisibleMobile = 3;
 
-    // Detecta se é mobile (apenas client-side)
     const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
     const currentMaxVisible = isMobile ? maxVisibleMobile : maxVisible;
 
