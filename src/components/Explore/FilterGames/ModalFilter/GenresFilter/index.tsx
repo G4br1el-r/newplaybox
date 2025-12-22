@@ -50,7 +50,7 @@ export default function GernesFilter({ genrerList }: GenrerFilterProps) {
         <span className="text-base font-bold text-white">Genres</span>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2">
         {genrerList.map((genre) => {
           const isSelected = isGenrerSelected(genre.idGenrer);
 

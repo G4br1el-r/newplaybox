@@ -13,7 +13,7 @@ export default function SearchInput() {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full lg:w-4/6">
       <input
         type="text"
         name="search"
@@ -21,7 +21,7 @@ export default function SearchInput() {
         onChange={(e) => handleSearchInput(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e)}
         placeholder="Search for games..."
-        className="h-10 w-full rounded-3xl border-2 border-slate-700/50 bg-slate-900/90 px-4 pr-13 text-sm text-white/80 placeholder-slate-500 shadow-2xl backdrop-blur-2xl transition-all focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/30 focus:outline-none"
+        className="focus:ring-0.5 h-10 w-full rounded-3xl border-2 border-slate-700/50 bg-slate-900/90 px-4 pr-13 text-sm text-white/80 placeholder-slate-500 shadow-2xl backdrop-blur-2xl transition-all focus:border-purple-500/50 focus:ring-purple-500/50 focus:outline-none"
       />
 
       {searchValue && (

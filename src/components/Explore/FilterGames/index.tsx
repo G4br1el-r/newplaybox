@@ -9,9 +9,11 @@ export default async function ExploreFilterGames() {
   const genrerList = await getlistGenresForFilters();
 
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex w-full flex-col gap-3 lg:flex-row">
       <SearchInput />
-      <DialogFilter platformsList={platformsList} genrerList={genrerList} />
+      <div className="flex flex-1 items-center justify-center gap-2">
+        <DialogFilter platformsList={platformsList} genrerList={genrerList} />
+      </div>
     </div>
   );
 }

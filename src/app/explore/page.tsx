@@ -1,13 +1,14 @@
 import ExploreFilterGames from "@/components/Explore/FilterGames";
 import GamesList from "@/components/Explore/GameList";
+import { Footer } from "@/components/Footer";
 import { getListFilteredGames } from "@/services/api";
 
 export default async function Explore() {
   const inicialDataGames = await getListFilteredGames();
 
   return (
-    <section className="mt-25 flex flex-col gap-5 px-3 text-2xl font-bold">
-      <h1 className="text-3xl leading-none font-black">
+    <section className="flex flex-col gap-5 px-3 pt-25 text-2xl font-bold xl:pt-15">
+      <h1 className="text-2xl leading-none font-black sm:text-3xl md:text-4xl lg:text-5xl">
         <div className="flex items-center gap-1">
           <span className="inline-block bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">
             Explore{" "}
@@ -18,7 +19,7 @@ export default async function Explore() {
         </div>
       </h1>
 
-      <h2 className="text-sm leading-relaxed text-white/70">
+      <h2 className="text-xs leading-relaxed text-white/70 sm:text-sm md:text-base">
         Discover your next gaming adventure from{" "}
         <span className="relative inline-block">
           <span className="relative z-10 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 bg-clip-text font-bold text-transparent">
@@ -31,6 +32,7 @@ export default async function Explore() {
 
       <ExploreFilterGames />
       <GamesList inicialData={inicialDataGames} />
+      <Footer />
     </section>
   );
 }

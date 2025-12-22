@@ -28,7 +28,6 @@ export default function PlatformCard({
   if (!findPlatformIcon) return null;
 
   const PlatformIcon = findPlatformIcon;
-
   return (
     <div
       className={`${TailwindHeight} ${TailwindWidth} ${hasBackground ? "bg-white/8 p-1.5 backdrop-blur-xl" : ""} flex items-center justify-center rounded-lg`}

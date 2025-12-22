@@ -22,7 +22,6 @@ export default function GameCard({ game }: GameCardProps) {
     if (metascore >= 50) return "bg-yellow-500";
     return "bg-red-500";
   };
-
   return (
     <Link href={`/game/${game.slug}`} prefetch={false}>
       <article className="group flex h-[460px] max-h-[460px] cursor-pointer flex-col overflow-hidden rounded-xl border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-blue-900/20 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/20">

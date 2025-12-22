@@ -6,11 +6,13 @@ interface ActiveFilterState {
   genresSelected: GenrerSelect[];
   metacriticSelected: number;
   searchInputValue: string;
+  countFilterActive: number | string;
 
   handleTogglePlatform: (mainId: number, childId: number) => void;
   handleToggleGenres: (idGenrer: number, nameGenrer: string) => void;
   handleMetacriticSelected: (rating: number) => void;
   handleSearchInput: (value: string) => void;
+  handleCountFilterActive: () => void;
 
   clearPlatforms: () => void;
   clearSearchInput: () => void;
@@ -31,6 +33,7 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
   genresSelected: [],
   metacriticSelected: 0,
   searchInputValue: "",
+  countFilterActive: 0,
 
   handleTogglePlatform: (mainId, childId) => {
     set((state) => {
@@ -108,8 +111,28 @@ export const useActiveFilter = create<ActiveFilterState>((set, get) => ({
     set({ searchInputValue: value });
   },
 
+  handleCountFilterActive: () => {
+    const countPlatforms = get().platformsSelected.flatMap(
+      (item) => item.idsPlatformsChildren,
+    ).length;
+    const countGenres = get().genresSelected.length;
+    const countMetacritic = get().metacriticSelected !== 0 ? 1 : 0;
+    const count = countPlatforms + countGenres + countMetacritic;
+
+    if (count > 10) {
+      set({ countFilterActive: "10+" });
+    } else {
+      set({ countFilterActive: count });
+    }
+  },
+
   clearPlatforms: () =>
-    set({ platformsSelected: [], genresSelected: [], metacriticSelected: 0 }),
+    set({
+      platformsSelected: [],
+      genresSelected: [],
+      metacriticSelected: 0,
+      countFilterActive: 0,
+    }),
 
   clearSearchInput: () => set({ searchInputValue: "" }),
 }));

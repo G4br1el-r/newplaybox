@@ -14,13 +14,15 @@ export const useSearchGames = (inicialDataGames?: FilteredGamesDataType) => {
     platforms: searchParams.get("platforms") || undefined,
     genres: searchParams.get("genres") || undefined,
     metacritic: searchParams.get("metacritic") || undefined,
+    page: Number(searchParams.get("page")) || 1,
   };
 
   const hasFilters = !!(
     filters.search ||
     filters.platforms ||
     filters.genres ||
-    filters.metacritic
+    filters.metacritic ||
+    (filters.page && filters.page > 1)
   );
 
   return useQuery({
@@ -30,6 +32,5 @@ export const useSearchGames = (inicialDataGames?: FilteredGamesDataType) => {
     staleTime: 5 * 60 * 1000,
     gcTime: 5 * 60 * 1000,
     retry: 1,
-    enabled: hasFilters,
   });
 };

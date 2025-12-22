@@ -29,7 +29,7 @@ export default function PlatformFilter({ platformsList }: PlatformFilterProps) {
   };
 
   return (
-    <div>
+    <div >
       <div className="mb-4 flex items-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-500/10 pb-1.5 pl-0.5 text-xl leading-none">
           🎮
@@ -37,7 +37,7 @@ export default function PlatformFilter({ platformsList }: PlatformFilterProps) {
         <span className="text-base font-bold text-white">Platforms</span>
       </div>
 
-      <Accordion.Root type="multiple" className="space-y-2">
+      <Accordion.Root type="multiple" className="space-y-2 ">
         {platformsList.map((platformMain) => {
           const groupSelected = isGroupSelected(platformMain.id);
 

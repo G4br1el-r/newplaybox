@@ -10,6 +10,7 @@ import RatingFilter from "./RatingFilter";
 import { GenrerArrayType } from "@/@types/GenresType";
 import { useActiveFilter } from "@/store/useActiveFilter";
 import { useBuildQueryParams } from "@/hooks/Explore/useBuildQueryParams";
+import FilledButton from "@/components/Button/FilledButton";
 
 interface DialogFilterProps {
   platformsList: PlatformParentsList[];
@@ -22,26 +23,42 @@ export default function DialogFilter({
 }: DialogFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const clearPlatforms = useActiveFilter((state) => state.clearPlatforms);
+  const countFilterActive = useActiveFilter((state) => state.countFilterActive);
+  const handleCountFilterActive = useActiveFilter(
+    (state) => state.handleCountFilterActive,
+  );
   const { handleParamsUrl } = useBuildQueryParams();
 
   const handleShowResults = () => {
     handleParamsUrl();
+    handleCountFilterActive();
     setIsOpen(false);
   };
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+      <FilledButton
+        content="🔍 Search"
+        ButtonType="button"
+        extraClass="text-[1rem] flex items-center justify-center lg:flex-1"
+        onClick={handleShowResults}
+      />
       <Dialog.Trigger asChild>
-        <button className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-800 via-purple-800 to-pink-800 font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg hover:brightness-110 active:scale-95">
-          <FaFilter className="h-4 w-4" />
+        <button className="flex h-full w-full cursor-pointer items-center justify-center gap-1 rounded-lg border-2 border-purple-500/50 py-1 text-white backdrop-blur-sm transition-all duration-300 hover:bg-purple-500/10 lg:flex-1">
+          <span className="text-[1rem]">🎚️</span>
           <span className="text-[1.1rem] tracking-wide">Filter</span>
+          {countFilterActive !== 0 && (
+            <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-purple-500 text-[0.6rem]">
+              {countFilterActive}
+            </div>
+          )}
         </button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 fixed inset-0 z-92 backdrop-blur-xl" />
 
-        <Dialog.Content className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 fixed top-1/2 left-1/2 z-100 h-[70vh] w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 focus:outline-none">
+        <Dialog.Content className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 fixed top-1/2 left-1/2 z-100 h-[70vh] w-[90vw] -translate-x-1/2 -translate-y-1/2 focus:outline-none lg:h-[80vh] lg:max-w-3xl xl:max-w-4xl">
           <Dialog.Title className="sr-only">Game Search Filters</Dialog.Title>
           <Dialog.Description className="sr-only">
             Refine your game search by selecting platforms, genres, release
