@@ -1,4 +1,3 @@
-// components/Explore/Pagination.tsx
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
@@ -75,21 +74,33 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-3 py-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
+    <nav
+      className="flex w-full flex-col items-center gap-3 py-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2"
+      aria-label="Pagination navigation"
+      role="navigation"
+    >
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={!hasPrevious}
         className="h-full w-full cursor-pointer rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white/10 sm:w-auto"
+        aria-label={`Go to previous page${hasPrevious ? ` (page ${currentPage - 1})` : ""}`}
+        type="button"
       >
         Previous
       </button>
 
-      <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+      <div
+        className="flex flex-wrap items-center justify-center gap-1 sm:gap-2"
+        role="list"
+        aria-label="Page numbers"
+      >
         {getPageNumbers().map((page, index) =>
           page === "..." ? (
             <span
               key={`ellipsis-${index}`}
               className="flex h-8 w-8 shrink-0 items-center justify-center text-sm text-white/50 sm:h-10 sm:w-10"
+              aria-hidden="true"
+              role="listitem"
             >
               ...
             </span>
@@ -102,6 +113,10 @@ export default function Pagination({
                   ? "bg-purple-500 text-white shadow-lg"
                   : "bg-white/10 text-white hover:bg-white/20"
               }`}
+              aria-label={`${currentPage === page ? "Current page, " : ""}Page ${page}`}
+              aria-current={currentPage === page ? "page" : undefined}
+              type="button"
+              role="listitem"
             >
               {page}
             </button>
@@ -113,9 +128,11 @@ export default function Pagination({
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={!hasNext}
         className="h-full w-full cursor-pointer rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white/10 sm:w-auto"
+        aria-label={`Go to next page${hasNext ? ` (page ${currentPage + 1})` : ""}`}
+        type="button"
       >
         Next
       </button>
-    </div>
+    </nav>
   );
 }

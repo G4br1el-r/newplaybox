@@ -32,7 +32,10 @@ export default function GameInformation({
     singleGameData.stores && singleGameData.stores.length > 0;
 
   return (
-    <section className="flex h-full w-full flex-col gap-15 md:gap-20 lg:px-5 xl:gap-25">
+    <section
+      className="flex h-full w-full flex-col gap-15 md:gap-20 lg:px-5 xl:gap-25"
+      aria-label="Game detailed information"
+    >
       <FadeIn>
         <BaseWrapperInformation
           informationTag="Game Overview"

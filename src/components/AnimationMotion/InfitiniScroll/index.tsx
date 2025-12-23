@@ -17,8 +17,14 @@ export function InfiniteScroll({
 
   return (
     <div className="relative flex overflow-hidden">
-      <div className="from-blue-darkest pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r to-transparent md:w-32 lg:w-40" />
-      <div className="from-blue-darkest pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l to-transparent md:w-32 lg:w-40" />
+      <div
+        className="from-blue-darkest/90 via-blue-darkest/10 pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r to-transparent md:w-40 lg:w-48"
+        aria-hidden="true"
+      />
+      <div
+        className="from-blue-darkest/90 via-blue-darkest/10 pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l to-transparent md:w-40 lg:w-48"
+        aria-hidden="true"
+      />
 
       <motion.div
         className="flex gap-2 md:gap-3 lg:gap-4"

@@ -13,34 +13,40 @@ export default function MetacriticCard({
 }: MetacriticCardProps) {
   const { starsRatingRender } = handleStarsMetacritic(metacritic);
   const isMetacriticUrl = Boolean(metacritic_url);
+
+  if (isMetacriticUrl) {
+    return (
+      <a
+        href={metacritic_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="transition-all duration-500 ease-in-out hover:scale-105"
+        aria-label={`Metacritic score: ${metacritic} out of 100. Opens Metacritic page in new tab`}
+      >
+        <div className="flex items-center justify-center gap-3">
+          <div
+            className="flex items-center justify-center rounded-[10px] bg-green-500 p-1.5 md:h-12 md:w-12"
+            role="img"
+            aria-label={`${metacritic}`}
+          >
+            <span aria-hidden="true">{metacritic}</span>
+          </div>
+        </div>
+      </a>
+    );
+  }
+
   return (
-    <a
-      href={isMetacriticUrl ? metacritic_url : ""}
-      className="pointer-events-none cursor-not-allowed opacity-100 transition-all duration-500 ease-in-out"
+    <div
+      className="pointer-events-none cursor-not-allowed opacity-50"
+      role="img"
+      aria-label={`Metacritic score: ${metacritic} out of 100`}
     >
       <div className="flex items-center justify-center gap-3">
         <div className="flex items-center justify-center rounded-[10px] bg-green-500 p-1.5 md:h-12 md:w-12">
-          {metacritic}
+          <span aria-hidden="true">{metacritic}</span>
         </div>
-        {/* <div className="flex items-center gap-1">
-          {starsRatingRender.map((star, index) => {
-            if (star === "full") {
-              return <FaStar key={index} className="h-5 w-5 text-yellow-500" />;
-            } else if (star === "half") {
-              return (
-                <FaStarHalfAlt
-                  key={index}
-                  className="h-5 w-5 text-yellow-500"
-                />
-              );
-            } else {
-              return (
-                <FaRegStar key={index} className="h-5 w-5 text-gray-500" />
-              );
-            }
-          })}
-        </div> */}
       </div>
-    </a>
+    </div>
   );
 }

@@ -1,18 +1,18 @@
-// components/animations/Stagger.tsx
 "use client";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-// Container que controla o delay entre os filhos
 interface StaggerContainerProps {
   children: ReactNode;
   staggerDelay?: number;
+  delayChildren?: number;
   className?: string;
 }
 
 export function StaggerContainer({
   children,
   staggerDelay = 0.1,
+  delayChildren = 0,
   className = "",
 }: StaggerContainerProps) {
   return (
@@ -24,6 +24,7 @@ export function StaggerContainer({
         visible: {
           transition: {
             staggerChildren: staggerDelay,
+            delayChildren: delayChildren,
           },
         },
       }}
@@ -34,7 +35,6 @@ export function StaggerContainer({
   );
 }
 
-// Item individual que será animado
 interface StaggerItemProps {
   children: ReactNode;
   className?: string;
@@ -51,8 +51,7 @@ export function StaggerItem({ children, className = "" }: StaggerItemProps) {
           transition: { duration: 0.5 },
         },
       }}
-      className={className || undefined}
-      style={!className ? { display: "contents" } : undefined}
+      className={className}
     >
       {children}
     </motion.div>

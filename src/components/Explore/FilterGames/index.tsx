@@ -11,7 +11,11 @@ export default async function ExploreFilterGames() {
   const genrerList = await getlistGenresForFilters();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div
+      className="flex flex-col gap-3"
+      role="search"
+      aria-label="Game search and filters"
+    >
       <FadeIn delay={0}>
         <SearchInput />
       </FadeIn>

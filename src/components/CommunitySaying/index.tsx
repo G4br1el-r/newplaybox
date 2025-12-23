@@ -20,25 +20,38 @@ export default function CommunitySaying({
   ];
 
   return (
-    <section className="flex flex-col gap-6 px-3 py-8 md:gap-8 md:py-12">
-      {/* Header desliza da esquerda */}
+    <section
+      className="flex flex-col gap-6 px-3 py-8 md:gap-8 md:py-12"
+      aria-labelledby="community-saying-title"
+    >
       <SlideIn direction="left">
-        <div className="flex flex-col gap-3">
+        <header className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <div className="h-1 w-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 md:w-16" />
-            <h2 className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-[1.4rem] font-bold text-transparent md:text-[2rem] lg:text-[2.4rem] xl:text-[2.8rem]">
+            <div
+              className="h-1 w-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 md:w-16"
+              aria-hidden="true"
+            />
+            <h2
+              id="community-saying-title"
+              className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-[1.4rem] font-bold text-transparent md:text-[2rem] lg:text-[2.4rem] xl:text-[2.8rem]"
+            >
               What the Community Is Saying Now
             </h2>
           </div>
           <p className="max-w-[700px] text-[0.85rem] text-white/60 md:text-[1rem] lg:text-[1.1rem]">
             Real voices from real gamers sharing their latest gaming experiences
           </p>
-        </div>
+        </header>
       </SlideIn>
 
-      <div className="flex w-full flex-col gap-4 md:gap-5 xl:grid xl:grid-cols-2">
+      <div
+        className="flex w-full flex-col gap-4 md:gap-5 xl:grid xl:grid-cols-2"
+        role="list"
+      >
         {CommunitySayingData.map((comment, index) => (
-          <Comments key={comment.id} {...comment} photo={photoPerson[index]} />
+          <div key={comment.id} role="listitem">
+            <Comments {...comment} photo={photoPerson[index]} />
+          </div>
         ))}
       </div>
     </section>

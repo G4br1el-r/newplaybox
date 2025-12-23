@@ -35,37 +35,46 @@ export default function CardFeaturedGames({
   const pathname = usePathname();
 
   return (
-    <div
+    <article
       className={`group relative h-[420px] w-full overflow-hidden rounded-xl border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-blue-900/20 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 md:h-[450px]`}
+      aria-labelledby={`game-title-${slug}`}
     >
       <Link
         prefetch={priority}
         href={`/game/${slug}`}
         className="absolute top-0 left-0 z-10 h-full w-full rounded-xl transition-all duration-500"
+        aria-label={`View details for ${name}`}
       >
         <div className="flex h-full flex-col justify-between p-4 md:p-5">
           <div
             className={`${pathname === "/" ? "justify-between" : "justify-center"} flex items-start justify-between`}
           >
-            <p className="line-clamp-2 max-w-[85%] text-[1.05rem] leading-tight font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] md:text-[1.2rem] lg:text-[1.3rem]">
+            <h3
+              id={`game-title-${slug}`}
+              className="line-clamp-2 max-w-[85%] text-[1.05rem] leading-tight font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] md:text-[1.2rem] lg:text-[1.3rem]"
+            >
               {name}
-            </p>
+            </h3>
 
             {pathname === "/" && (
-              <div className="inline-flex flex-shrink-0 items-center rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-2.5 py-1 text-[0.65rem] font-bold whitespace-nowrap shadow-[0_0_15px_rgba(251,146,60,0.6)] md:text-[0.7rem]">
-                🔥 HOT
+              <div
+                className="inline-flex flex-shrink-0 items-center rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-2.5 py-1 text-[0.65rem] font-bold whitespace-nowrap shadow-[0_0_15px_rgba(251,146,60,0.6)] md:text-[0.7rem]"
+                role="status"
+                aria-label="Trending game"
+              >
+                <span aria-hidden="true">🔥</span> HOT
               </div>
             )}
           </div>
         </div>
       </Link>
 
-      <TagsWrapper isOpen={isOpen} tags={tags} />
+      <TagsWrapper isOpen={isOpen} tags={tags} gameTitle={name} />
 
       <div className="absolute inset-0 -z-10">
         <BaseImage
           src={background_image}
-          alt={name}
+          alt={`${name} game cover`}
           priority={priority}
           quality={priority ? 100 : 80}
           sizes={
@@ -76,7 +85,10 @@ export default function CardFeaturedGames({
           extraClassImage="h-full w-full rounded-xl object-cover group-hover:scale-105 transition-transform duration-700"
           extraClassWrapper="relative h-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"
+          aria-hidden="true"
+        />
       </div>
 
       <div
@@ -88,16 +100,21 @@ export default function CardFeaturedGames({
           ButtonType="button"
           href="#"
           onClick={() => setIsOpen(!isOpen)}
+          ariaLabel={`${isOpen ? "Hide" : "Show"} tags for ${name}`}
+          ariaExpanded={isOpen}
+          ariaControls={`tags-${slug}`}
         />
 
         {isMetacriticRating && (
           <div
             className={`absolute -right-13 flex h-9 w-9 items-center justify-center rounded-lg md:-right-18 md:h-10 md:w-10 ${metacriticClassBackground} border-2 border-white/20 text-[0.85rem] font-bold shadow-[0_0_20px_rgba(0,0,0,0.5)] md:text-[0.9rem]`}
+            role="img"
+            aria-label={`Metacritic score: ${metacritic} out of 100`}
           >
-            <p>{metacritic}</p>
+            <p aria-hidden="true">{metacritic}</p>
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 }

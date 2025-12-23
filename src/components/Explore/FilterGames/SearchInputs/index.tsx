@@ -14,24 +14,35 @@ export default function SearchInput() {
 
   return (
     <div className="relative">
+      <label htmlFor="game-search" className="sr-only">
+        Search for games by name
+      </label>
       <input
-        type="text"
+        type="search"
+        id="game-search"
         name="search"
         value={searchValue}
         onChange={(e) => handleSearchInput(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e)}
         placeholder="Search for games..."
         className="focus:ring-0.5 h-10 w-full rounded-3xl border-2 border-slate-700/50 bg-slate-900/90 px-4 pr-13 text-sm text-white/80 placeholder-slate-500 shadow-2xl backdrop-blur-2xl transition-all focus:border-purple-500/50 focus:ring-purple-500/50 focus:outline-none"
+        aria-describedby={searchValue ? "clear-search-hint" : undefined}
       />
 
       {searchValue && (
-        <button
-          onClick={() => clearSearchInput()}
-          className="absolute top-1/2 right-3 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-[0.8rem] text-white/60 transition-all hover:bg-slate-600/70 hover:text-white"
-          aria-label="Clear search input"
-        >
-          ✕
-        </button>
+        <>
+          <span id="clear-search-hint" className="sr-only">
+            Press the clear button to remove search text
+          </span>
+          <button
+            onClick={() => clearSearchInput()}
+            className="absolute top-1/2 right-3 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-[0.8rem] text-white/60 transition-all hover:bg-slate-600/70 hover:text-white"
+            aria-label="Clear search input"
+            type="button"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        </>
       )}
     </div>
   );

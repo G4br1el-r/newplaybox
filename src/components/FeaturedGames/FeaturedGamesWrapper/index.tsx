@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import dynamic from "next/dynamic"; // ✅ ADICIONADO
+import dynamic from "next/dynamic";
 
 const AudioPlayer = dynamic(
   () => import("../AudioPlayer").then((mod) => ({ default: mod.AudioPlayer })),
@@ -35,6 +35,7 @@ export default function FeaturedGamesWrapper({
             ? "max-h-[2500px] md:max-h-[1800px] xl:max-h-[1300px]"
             : "xs:max-h-[1450px] max-h-[1460px] md:max-h-[1120px] xl:max-h-[950px]"
         }`}
+        aria-labelledby="featured-games-title"
       >
         <AudioPlayer ref={audioPlayerRef} src="/sounds/coin.wav" />
 
@@ -46,10 +47,15 @@ export default function FeaturedGamesWrapper({
               ? "pointer-events-none translate-y-4 opacity-0 duration-100"
               : "pointer-events-auto top-255 h-[455px] translate-y-0 opacity-100 duration-2000"
           }`}
+          aria-hidden="true"
         />
       </section>
 
-      <div className="relative z-50 flex justify-center">
+      <div
+        className="relative z-50 flex justify-center"
+        role="region"
+        aria-label="Featured games expansion controls"
+      >
         <button
           className={`absolute flex h-20 w-25 items-center justify-center rounded-full transition-all duration-400 ${
             isOpen
@@ -58,13 +64,16 @@ export default function FeaturedGamesWrapper({
           }`}
           onClick={handleClick}
           aria-label={isOpen ? "Show less games" : "Show more games"}
+          aria-expanded={isOpen}
+          aria-controls="featured-games-grid"
         >
           <img
             src="/coin.gif"
-            alt="Coin animation"
+            alt=""
             className={`pointer-events-none absolute -top-10 h-20 w-20 rounded-full object-cover drop-shadow-[0_0_20px_rgba(234,179,8,0.8)] transition-opacity duration-300 ${
               isOpen ? "coin-animate opacity-100" : "opacity-0"
             }`}
+            aria-hidden="true"
           />
 
           <div
@@ -72,7 +81,10 @@ export default function FeaturedGamesWrapper({
               isOpen ? "animate-none" : "animate-pulse"
             }`}
           >
-            <p className="pixelFont relative z-10 w-full text-[0.85rem] font-bold text-purple-200 drop-shadow-[0_2px_10px_rgba(216,180,254,0.8)] md:text-[0.95rem]">
+            <p
+              className="pixelFont relative z-10 w-full text-[0.85rem] font-bold text-purple-200 drop-shadow-[0_2px_10px_rgba(216,180,254,0.8)] md:text-[0.95rem]"
+              aria-hidden="true"
+            >
               {isOpen ? "Show Less" : "Show More"}
             </p>
           </div>

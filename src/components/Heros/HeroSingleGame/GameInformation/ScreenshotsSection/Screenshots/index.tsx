@@ -17,7 +17,7 @@ export default function Screenshots({
 
   const slides = singleGameScreenshotsData.results.map((screenshot) => ({
     src: screenshot.image,
-    alt: `${screenshot.id} screenshot`,
+    alt: `Screenshot ${screenshot.id}`,
   }));
 
   const hasImage = singleGameScreenshotsData.results.length > 0;
@@ -26,25 +26,32 @@ export default function Screenshots({
     <>
       {hasImage && (
         <>
-          <div className="grid w-full grid-cols-2 gap-5 md:grid-cols-3 2xl:grid-cols-4">
+          <div
+            className="grid w-full grid-cols-2 gap-5 md:grid-cols-3 2xl:grid-cols-4"
+            role="list"
+            aria-label="Game screenshots gallery"
+          >
             {singleGameScreenshotsData.results.map((screenshot, idx) => (
-              <div
+              <button
                 key={screenshot.id}
                 onClick={() => {
                   setIndex(idx);
                   setOpen(true);
                 }}
                 className="relative aspect-video cursor-pointer overflow-hidden rounded-xl bg-white/5 backdrop-blur-xl transition-transform hover:scale-105"
+                aria-label={`View screenshot ${idx + 1} of ${singleGameScreenshotsData.results.length} in full size`}
+                type="button"
+                role="listitem"
               >
                 <Image
                   src={screenshot.image}
-                  alt={`screenshot ${screenshot.id}`}
+                  alt={`Game screenshot ${idx + 1}`}
                   fill
                   className="object-cover"
                   loading="lazy"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
-              </div>
+              </button>
             ))}
           </div>
 
@@ -67,6 +74,7 @@ export default function Screenshots({
               maxZoomPixelRatio: 30,
               scrollToZoom: true,
             }}
+            aria-label="Screenshot viewer"
           />
         </>
       )}

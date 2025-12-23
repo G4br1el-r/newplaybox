@@ -27,10 +27,16 @@ export default function GamesList({ inicialData }: inicialDataGamesProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        role="list"
+        aria-label={`Search results showing ${data.results.length} games`}
+      >
         {data.results.map((game, index) => (
           <FloatIn key={game.id} delay={index * 0.03}>
-            <GameCard game={game} />
+            <div role="listitem">
+              <GameCard game={game} />
+            </div>
           </FloatIn>
         ))}
       </div>

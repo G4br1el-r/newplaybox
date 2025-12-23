@@ -31,9 +31,12 @@ export default function PlatformCard({
   return (
     <div
       className={`${TailwindHeight} ${TailwindWidth} ${hasBackground ? "bg-white/8 p-1.5 backdrop-blur-xl" : ""} flex items-center justify-center rounded-lg`}
+      role="img"
+      aria-label={`Available on ${platform.name}`}
     >
       <PlatformIcon
         className={`${colorIconTailwind ? colorIconTailwind : "text-white"} h-full w-full`}
+        aria-hidden="true"
       />
     </div>
   );
