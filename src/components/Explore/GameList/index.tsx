@@ -1,4 +1,3 @@
-// components/Explore/GameList.tsx
 "use client";
 
 import { FilteredGamesDataType } from "@/@types/FilteredGamesType";
@@ -9,6 +8,8 @@ import Pagination from "../Pagination";
 import LoadingState from "./Loading";
 import ErrorState from "./Error";
 import EmptyState from "./Empty";
+import { FloatIn } from "@/components/AnimationMotion/FloatIn";
+import { FadeIn } from "@/components/AnimationMotion/Fadein";
 
 interface inicialDataGamesProps {
   inicialData: FilteredGamesDataType;
@@ -27,17 +28,21 @@ export default function GamesList({ inicialData }: inicialDataGamesProps) {
   return (
     <div className="flex flex-col gap-8">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.results.map((game) => (
-          <GameCard key={game.id} game={game} />
+        {data.results.map((game, index) => (
+          <FloatIn key={game.id} delay={index * 0.03}>
+            <GameCard game={game} />
+          </FloatIn>
         ))}
       </div>
 
-      <Pagination
-        currentPage={currentPage}
-        hasNext={!!data.next}
-        hasPrevious={!!data.previous}
-        totalCount={data.count}
-      />
+      <FadeIn delay={0.2}>
+        <Pagination
+          currentPage={currentPage}
+          hasNext={!!data.next}
+          hasPrevious={!!data.previous}
+          totalCount={data.count}
+        />
+      </FadeIn>
     </div>
   );
 }

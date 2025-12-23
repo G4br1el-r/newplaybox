@@ -23,6 +23,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "axios": "^1.11.0",
+    "framer-motion": "^12.23.26",
     "lucide-react": "^0.536.0",
     "next": "^16.0.7",
     "react": "19.1.0",

@@ -1,72 +1,95 @@
+"use client";
+
+import { TypewriterText } from "@/components/AnimationMotion/TypewriterLine";
+import { motion } from "framer-motion";
+
 export default function CodeNPM() {
+  const totalDuration = 12.5;
+
   return (
     <div className="mt-8 flex w-full flex-col gap-5 font-mono text-[0.75rem] md:mt-10 md:gap-6 md:text-[0.9rem] lg:text-[1rem]">
-      <div className="text-green-400">
+      <TypewriterText delay={0} duration={1.5}>
         <span className="font-bold text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
           ${" "}
         </span>
-        git clone{" "}
+        <span className="text-green-400">git clone </span>
         <span className="text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.9)]">
           legendary-gaming-platform.git
         </span>
-      </div>
+      </TypewriterText>
 
-      <div className="text-green-400">
+      <TypewriterText delay={1.6} duration={2}>
         <span className="font-bold text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
           ${" "}
         </span>
         <span className="font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.9)]">
           npm install
-        </span>{" "}
-        epic-adventures multiplayer-magic boss-battles
-      </div>
+        </span>
+        <span className="text-green-400">
+          {" "}
+          epic-adventures multiplayer-magic boss-battles
+        </span>
+      </TypewriterText>
 
-      <div className="text-green-400">
+      <TypewriterText delay={3.7} duration={2}>
         <span className="font-bold text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
           ${" "}
         </span>
         <span className="font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.9)]">
           npm install
-        </span>{" "}
-        pixel-perfect-graphics legendary-soundtracks
-      </div>
+        </span>
+        <span className="text-green-400">
+          {" "}
+          pixel-perfect-graphics legendary-soundtracks
+        </span>
+      </TypewriterText>
 
-      <div className="text-green-400">
+      <TypewriterText delay={5.8} duration={2.2}>
         <span className="font-bold text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
           ${" "}
         </span>
         <span className="font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.9)]">
           npx run
-        </span>{" "}
-        create-gaming-universe{" "}
+        </span>
+        <span className="text-green-400"> create-gaming-universe </span>
         <span className="text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.9)]">
           --legendary-mode
         </span>
-      </div>
+      </TypewriterText>
 
-      <div className="text-green-400">
+      <TypewriterText delay={8.1} duration={1.8}>
         <span className="font-bold text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.9)]">
           ${" "}
         </span>
         <span className="font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.9)]">
           npm run
-        </span>{" "}
-        deploy{" "}
+        </span>
+        <span className="text-green-400"> deploy </span>
         <span className="text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.9)]">
           --achievement-unlocked
         </span>
-      </div>
+      </TypewriterText>
 
-      <div className="mt-2 flex items-center gap-2">
-        <span className="text-[1.1rem] text-green-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.9)] md:text-[1.2rem]">
-          ✓
-        </span>
-        <span className="font-bold text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">
-          🎮 Gaming universe successfully deployed! Ready Player One!
-        </span>
-      </div>
+      <TypewriterText delay={10} duration={2.5}>
+        <div className="flex items-center gap-2">
+          <span className="text-[1.1rem] text-green-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.9)] md:text-[1.2rem]">
+            ✓
+          </span>
+          <span className="font-bold text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">
+            🎮 Gaming universe successfully deployed! Ready Player One!
+          </span>
+        </div>
+      </TypewriterText>
 
-      <div className="mt-2 ml-1 inline-block h-[18px] w-[8px] bg-green-400 shadow-[0_0_15px_rgba(34,197,94,0.9)] md:h-[22px] md:w-[10px]"></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: totalDuration,
+          duration: 0,
+        }}
+        className="animate-blink mt-2 ml-1 inline-block h-[18px] w-[8px] bg-green-400 shadow-[0_0_15px_rgba(34,197,94,0.9)] md:h-[22px] md:w-[10px]"
+      />
     </div>
   );
 }

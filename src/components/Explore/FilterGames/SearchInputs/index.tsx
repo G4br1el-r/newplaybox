@@ -13,7 +13,7 @@ export default function SearchInput() {
   };
 
   return (
-    <div className="relative w-full lg:w-4/6">
+    <div className="relative">
       <input
         type="text"
         name="search"

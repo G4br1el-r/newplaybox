@@ -40,7 +40,7 @@ export default function DialogFilter({
       <FilledButton
         content="🔍 Search"
         ButtonType="button"
-        extraClass="text-[1rem] flex items-center justify-center lg:flex-1"
+        extraClass="text-[1rem]  w-full flex items-center justify-center lg:flex-1"
         onClick={handleShowResults}
       />
       <Dialog.Trigger asChild>
