@@ -13,6 +13,8 @@ export default function HeroMain({ singleGameData }: HeroMainProps) {
       <BaseImage
         src={singleGameData.background_image}
         alt={singleGameData.name}
+        quality={100}
+        priority={true}
         extraClassWrapper="fixed inset-0 -z-10 h-full w-full"
         extraClassImage="h-full w-full object-cover bg-center"
       />

@@ -81,20 +81,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.rawg.io" />
         <link rel="preconnect" href="https://media.rawg.io" />
         <link rel="dns-prefetch" href="https://media.rawg.io" />
-
-        <link
-          rel="preload"
-          as="image"
-          href="/controll.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/blackhole.webp"
-          type="image/webp"
-        />
       </head>
       <body
         className={`${orbitron.className} bg-blue-darkest overflow-x-hidden bg-center bg-no-repeat tracking-widest text-white`}
