@@ -38,7 +38,7 @@ export default function CommunitySaying({
 
       <div className="flex w-full flex-col gap-4 md:gap-5 xl:grid xl:grid-cols-2">
         {CommunitySayingData.map((comment, index) => (
-          <Comments {...comment} photo={photoPerson[index]} />
+          <Comments key={comment.id} {...comment} photo={photoPerson[index]} />
         ))}
       </div>
     </section>

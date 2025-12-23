@@ -37,7 +37,7 @@ export default function Comments({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block h-auto min-h-[240px] w-full rounded-xl border-2 border-purple-500/30 bg-gradient-to-br from-purple-900/40 via-blue-900/30 to-purple-900/40 p-4 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] md:min-h-[260px] md:min-h-[310px] md:p-5"
+      className="group relative block h-auto min-h-[240px] w-full rounded-xl border-2 border-purple-500/30 bg-gradient-to-br from-purple-900/40 via-blue-900/30 to-purple-900/40 p-4 backdrop-blur-sm transition-all duration-500 hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] md:min-h-[260px] md:p-5"
     >
       <div className="absolute top-0 left-0 h-full w-1 rounded-l-xl bg-gradient-to-b from-purple-500 via-cyan-500 to-purple-500" />
 
